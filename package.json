@@ -1,0 +1,17 @@
+{
+	"name": "Future Armenian",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"dependencies": {},
+	"devDependencies": {
+		"electron": "^22.0.0"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "electron .",
+		"build": "electron-packager . FutureArmenian --out=dist/win --platform=win32 --arch=x64 --icon=src/img/FutureArmenian.ico"
+	},
+	"author": "",
+	"license": "ISC"
+}

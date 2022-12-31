@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Future Armenian</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<button class="hide" id="openrestart" onclick="openrestart('restart_Contenier')">Վերսկսել</button>
+	<div class="none_Contenier hide" id="none_Contenier">
+		<div class="window_none">
+			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('none_Contenier')">
+			<p class="none_p">Նմանատիպ տվյալներով<br>այլ անձ չի գտնվել </p>
+		</div>
+	</div>
+	<div class="confirm_Contenier hide" id="confirm_Contenier">
+		<div class="window_restart">
+			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('confirm_Contenier')">
+			<p class="restart_p">Սեղմելով հաստատել կոճակի վրա <br> դուք փոխելու եք <b id="confirmCode"></b> անձնակն<br>համարով անձին բայց նաև կարող եք<br>դադարեցնել այս գործընթացը<br>սեղմելով <img src="img/close.svg" alt="Իքս" width="13px"> կոճակի վրա</p>
+			<button class="b_restart" id="confirmbutt" onclick="clearstorage()">Հաստատել</button>
+		</div>
+	</div>
+	<div class="restart_Contenier hide" id="restart_Contenier">
+		<div class="window_restart">
+			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('restart_Contenier')">
+			<p class="restart_p">Սեղմելով հաստատել կոճակի վրա դուք<br>ջնջելու եք արդեն իսկ պատահականության<br>սկզբունքով առկա մարդկանց բայց նաև<br>կարող եք դադարեցնել այս գործընթացը<br>սեղմելով <img src="img/close.svg" alt="Իքս" width="13px"> կոճակի վրա</p>
+			<button class="b_restart" onclick="clearstorage()">Հաստատել</button>
+		</div>
+	</div>
+	<div class="random">
+		<button class="button_Diaspora" id="button_Diaspora" onclick="button_Diaspora()">Սփյուռք</button>
+		<button class="button_Armenia" id="button_Armenia" onclick="button_Armenia()">Հայաստան</button>
+		<button class="button_Artsakh" id="button_Artsakh" onclick="button_Artsakh()">Արցախ</button>
+	</div>
+	<!--Diaspora-->
+	<div class="Diaspora hide" id="Diaspora">
+		<br>
+		<h1 class="table_title">Սփյուռք</h1>
+		<table class="styled-table">
+			<tbody id="diasporatable">
+			</tbody>
+		</table>
+		<br>
+	</div>
+	<!--Armenia-->
+	<div class="Armenia hide" id="Armenia">
+		<br>
+		<h1 class="table_title">Հայաստան</h1>
+		<table class="styled-table">
+			<tbody>
+			</tbody>
+		</table>
+		<br>
+	</div>
+	<!--Artsakh-->
+	<div class="Artsakh hide" id="Artsakh">
+		<br>
+		<h1 class="table_title">Արցախ</h1>
+		<table class="styled-table">
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+<script src="js/renderer.js"></script>
+</body>
+</html>
