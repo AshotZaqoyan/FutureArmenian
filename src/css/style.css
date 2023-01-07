@@ -68,8 +68,6 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-
-
 .random {
 	display: flex;
 	justify-content: center;
@@ -89,7 +87,11 @@
 	margin: 33px 10px;
 }
 
-.restart_Contenier, .confirm_Contenier, .none_Contenier {
+.restart_Contenier,
+.confirm_Contenier,
+.none_Contenier,
+.print_Contenier,
+.thesave_Contenier {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -99,17 +101,30 @@
 	background-color: #40756b25;
 }
 
-.restart {
-	top: 10px;
-	right: 10px;
+.restart,
+.print {
+
 	position: absolute;
-	width: 90px;
 	height: 33px;
 	border-radius: 5px;
 	border: none;
-	background-color: #FFD5D8;
-	color: #CE090A;
 	font-size: 16px;
+}
+
+.restart {
+	top: 10px;
+	width: 90px;
+	right: 10px;
+	color: #CE090A;
+	background-color: #FFD5D8;
+}
+
+.print {
+	top: 8px;
+	width: 120px;
+	left: 10px;
+	color: #3fa785;
+	background-color: #d0f4e8;
 }
 
 .window_restart {
@@ -124,6 +139,7 @@
 	font-size: 18px;
 	border-radius: 8px;
 }
+
 .window_none {
 	display: flex;
 	align-items: center;
@@ -147,13 +163,17 @@
 	height: 35px;
 	margin: 20px 0;
 }
-.restart_p, .none_p{
+
+.restart_p,
+.none_p {
 	margin: 0 15px;
 	text-align: center;
 }
-.none_p{
+
+.none_p {
 	margin-top: 5px;
 }
+
 .close_window {
 	position: relative;
 	width: 23px;
@@ -163,6 +183,23 @@
 	margin-top: 8px;
 	margin-bottom: 8px;
 }
+
 .hide {
 	display: none;
+}
+
+.forprint {
+	margin: 0;
+	/* color: #3fa785;
+	background-color: #d0f4e8; */
+}
+
+.printbutdiv {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+
 }

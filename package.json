@@ -3,7 +3,13 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "main.js",
-	"dependencies": {},
+	"dependencies": {
+		"json-as-xlsx": "^2.5.3",
+		"jsonrawtoxlsx": "^1.0.8",
+		"jspdf": "^2.5.1",
+		"jspdf-autotable": "^3.5.28",
+		"node-json-xlsx": "^0.2.2"
+	},
 	"devDependencies": {
 		"electron": "^22.0.0"
 	},

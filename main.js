@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 
 const createWindow = () => {
@@ -18,6 +18,56 @@ const createWindow = () => {
 };
 app.on('ready', createWindow);
 
+
+const template = [
+	{
+		label: 'File',
+		submenu: [
+			{
+				role: 'exit'
+			}
+		]
+	},
+	{
+		label: 'Edit',
+		submenu: [
+			{ role: 'cut' },
+			{ role: 'copy' },
+			{ role: 'paste' },
+			{ type: 'separator' },
+			{ role: 'selectAll' }
+		]
+	},
+
+	{
+		label: 'View',
+		submenu: [
+			{ role: 'reload' },
+			{ role: 'forceReload' },
+			{ role: 'toggleDevTools' },
+			{ type: 'separator' },
+			{ role: 'resetZoom' },
+			{ role: 'zoomIn' },
+			{ role: 'zoomOut' },
+			{ type: 'separator' },
+			{ role: 'togglefullscreen' }
+		]
+	},
+	{
+		role: 'window',
+		submenu: [
+			{ role: 'minimize' },
+			{ role: 'zoom' },
+			{ role: 'close' }
+		]
+	},
+];
+
+const menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);
+
+
+
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
 		app.quit();
@@ -31,3 +81,5 @@ app.on('activate', () => {
 		createWindow();
 	}
 });
+
+

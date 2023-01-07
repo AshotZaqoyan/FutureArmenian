@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,25 +8,51 @@
 	<title>Future Armenian</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+	<button class="hide" id="openprint" onclick="openrestart('print_Contenier')">Generate PDF</button>
 	<button class="hide" id="openrestart" onclick="openrestart('restart_Contenier')">Վերսկսել</button>
+	<div class="thesave_Contenier hide" id="thesave_Contenier">
+		<div class="window_none">
+			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('thesave_Contenier')">
+			<p class="none_p">Այն պահպանվել է<br>Download թվղապանակում</p>
+		</div>
+	</div>
 	<div class="none_Contenier hide" id="none_Contenier">
 		<div class="window_none">
 			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('none_Contenier')">
 			<p class="none_p">Նմանատիպ տվյալներով<br>այլ անձ չի գտնվել </p>
 		</div>
 	</div>
+	<div class="print_Contenier hide" id="print_Contenier">
+		<div class="window_restart">
+			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('print_Contenier')">
+			<p class="restart_p">Սեղմելով կոճակներից որևէ մեկի վրա <br> դուք արտահանելու եք ընտրված անձանց<br><br>
+			<div class="printbutdiv">
+				<button class="button_Diaspora forprint" onclick="diasporaExport()">Սփյուռք</button>
+				<button class="button_Armenia forprint" onclick="">Հայաստան</button>
+				<button class="button_Artsakh forprint" onclick="">Արցախ</button>
+			</div>
+
+		</div>
+	</div>
 	<div class="confirm_Contenier hide" id="confirm_Contenier">
 		<div class="window_restart">
 			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('confirm_Contenier')">
-			<p class="restart_p">Սեղմելով հաստատել կոճակի վրա <br> դուք փոխելու եք <b id="confirmCode"></b> անձնակն<br>համարով անձին բայց նաև կարող եք<br>դադարեցնել այս գործընթացը<br>սեղմելով <img src="img/close.svg" alt="Իքս" width="13px"> կոճակի վրա</p>
+			<p class="restart_p">Սեղմելով հաստատել կոճակի վրա <br> դուք փոխելու եք <b id="confirmCode"></b>
+				անձնակն<br>համարով անձին բայց նաև կարող եք<br>դադարեցնել այս գործընթացը<br>սեղմելով <img
+					src="img/close.svg" alt="Իքս" width="13px"> կոճակի վրա</p>
 			<button class="b_restart" id="confirmbutt" onclick="clearstorage()">Հաստատել</button>
 		</div>
 	</div>
 	<div class="restart_Contenier hide" id="restart_Contenier">
 		<div class="window_restart">
 			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('restart_Contenier')">
-			<p class="restart_p">Սեղմելով հաստատել կոճակի վրա դուք<br>ջնջելու եք արդեն իսկ պատահականության<br>սկզբունքով առկա մարդկանց բայց նաև<br>կարող եք դադարեցնել այս գործընթացը<br>սեղմելով <img src="img/close.svg" alt="Իքս" width="13px"> կոճակի վրա</p>
+			<p class="restart_p">Սեղմելով հաստատել կոճակի վրա դուք<br>ջնջելու եք արդեն իսկ պատահականության<br>սկզբունքով
+				առկա մարդկանց բայց նաև<br>կարող եք դադարեցնել այս գործընթացը<br>սեղմելով <img src="img/close.svg"
+					alt="Իքս" width="13px"> կոճակի վրա</p>
 			<button class="b_restart" onclick="clearstorage()">Հաստատել</button>
 		</div>
 	</div>
@@ -63,6 +90,7 @@
 			</tbody>
 		</table>
 	</div>
-<script src="js/renderer.js"></script>
+	<script src="js/renderer.js"></script>
 </body>
+
 </html>
