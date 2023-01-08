@@ -1,8 +1,5 @@
 const fs = require('fs');
-
-const { jsPDF } = require("jspdf"); // will automatically load the node version
-const autoTable = require("jspdf-autotable");
-
+const xlsx = require('xlsx');
 let rawdata = fs.readFileSync('src/data/diaspora.json');
 let DiasporaData = JSON.parse(rawdata);
 let Diaspora = JSON.parse(JSON.stringify(DiasporaData[0]));
@@ -87,12 +84,7 @@ let DAge61Number = [0, 18, 0, 0];
 let DFemale = [0, 50, 0, 0];
 let DMale = [0, 50, 0, 0];
 
-function getNumbers() {
-	Numbercoun = [];
-	Numbered = [];
-	Numberage = [];
-	Numbergender = [];
-
+function getNumberChosenPeople() {
 	RussiaNumber[2] = 0;
 	USANumber[2] = 0;
 	FranceNumber[2] = 0;
@@ -113,6 +105,135 @@ function getNumbers() {
 	DAge61Number[2] = 0;
 	DMale[2] = 0;
 	DFemale[2] = 0;
+	FormerSUNumber[4].Ukraine[2] = 0;
+	MiddleEastNumber[4].Lebanon[2] = 0;
+	OtherNumber[4].Anguilla[2] = 0;
+	OtherNumber[4].Anguilla[2] = 0;
+	RussiaNumber[0] = 0;
+	USANumber[0] = 0;
+	FranceNumber[0] = 0;
+	GeorgiaNumber[0] = 0;
+	EuropeNumber[0] = 0;
+	FormerSUNumber[0] = 0;
+	MiddleEastNumber[0] = 0;
+	LatinAmericaNumber[0] = 0;
+	OtherNumber[0] = 0;
+	TurkeyNumber[0] = 0;
+	IranNumber[0] = 0;
+	DSecondaryNumber[0] = 0;
+	DProfessionalNumber[0] = 0;
+	DUniversityNumber[0] = 0;
+	DAge18_30Number[0] = 0;
+	DAge31_45Number[0] = 0;
+	DAge46_60Number[0] = 0;
+	DAge61Number[0] = 0;
+	DMale[0] = 0;
+	DFemale[0] = 0;
+	FormerSUNumber[4].Ukraine[0] = 0;
+	MiddleEastNumber[4].Lebanon[0] = 0;
+	OtherNumber[4].Anguilla[0] = 0;
+	OtherNumber[4].Anguilla[0] = 0;
+
+	for (let i = 0; ChosenPeople.length > i; i++) {
+		const index = ChosenPeople.indexOf(undefined);
+		if (index > -1) {
+			ChosenPeople.splice(index, 1);
+		}
+	}
+
+	DiasporaCopy = getDifference(Diaspora, ChosenPeople);
+
+	for (let i = 0; ChosenPeople.length > i; i++) {
+		if (ChosenPeople[i].CountryFinal === "Russia") {
+			RussiaNumber[0]++;
+		} else if (ChosenPeople[i].CountryFinal === "USA") {
+			USANumber[0]++;
+		} else if (ChosenPeople[i].CountryFinal === "France") {
+			FranceNumber[0]++;
+		} else if (ChosenPeople[i].CountryFinal === "Georgia") {
+			GeorgiaNumber[0]++;
+		} else if (ChosenPeople[i].CountryFinal === "Europe (excl. France)") {
+			EuropeNumber[0]++;
+		} else if (ChosenPeople[i].CountryFinal === "Former SU (excl. RU & Geo)") {
+			FormerSUNumber[0]++;
+			if (ChosenPeople[i].Country === "Ukraine") {
+				FormerSUNumber[4].Ukraine[0]++;
+			}
+		} else if (ChosenPeople[i].CountryFinal === "Middle East (excl. Tr & Ir)") {
+			MiddleEastNumber[0]++;
+			if (ChosenPeople[i].Country === "Lebanon") {
+				MiddleEastNumber[4].Lebanon[0]++;
+			}
+		} else if (ChosenPeople[i].CountryFinal === "Latin America") {
+			LatinAmericaNumber[0]++;
+			if (ChosenPeople[i].Country === "Argentina") {
+				LatinAmericaNumber[4].Argentina[0]++;
+			}
+		} else if (ChosenPeople[i].CountryFinal === "Other") {
+			OtherNumber[0]++;
+			if (ChosenPeople[i].Country === "Anguilla") {
+				OtherNumber[4].Anguilla[0]++;
+			} else if (ChosenPeople[i].Country === "Canada") {
+				OtherNumber[4].Canada[0]++;
+			}
+		} else if (ChosenPeople[i].CountryFinal === "Turkey") {
+			TurkeyNumber[0]++;
+		} else if (ChosenPeople[i].CountryFinal === "Iran") {
+			IranNumber[0]++;
+		}
+		if (ChosenPeople[i].Education === "Secondary or unfinished secondary") {
+			DSecondaryNumber[0]++;
+		} else if (ChosenPeople[i].Education === "Professional or vocational") {
+			DProfessionalNumber[0]++;
+		} else if (ChosenPeople[i].Education === "University or postgraduate") {
+			DUniversityNumber[0]++;
+		}
+
+		if (ChosenPeople[i].AGEGroup === "31-45") {
+			DAge31_45Number[0]++;
+
+		} else if (ChosenPeople[i].AGEGroup === "18-30") {
+			DAge18_30Number[0]++;
+
+		} else if (ChosenPeople[i].AGEGroup === "46-60") {
+			DAge46_60Number[0]++;
+		} else if (ChosenPeople[i].AGEGroup === "61+") {
+			DAge61Number[0]++;
+		}
+
+		if (ChosenPeople[i].Gender === "Male") {
+			DMale[0]++;
+
+		} else {
+			DFemale[0]++;
+		}
+	}
+}
+function getNumbers() {
+	RussiaNumber[2] = 0;
+	USANumber[2] = 0;
+	FranceNumber[2] = 0;
+	GeorgiaNumber[2] = 0;
+	EuropeNumber[2] = 0;
+	FormerSUNumber[2] = 0;
+	MiddleEastNumber[2] = 0;
+	LatinAmericaNumber[2] = 0;
+	OtherNumber[2] = 0;
+	TurkeyNumber[2] = 0;
+	IranNumber[2] = 0;
+	DSecondaryNumber[2] = 0;
+	DProfessionalNumber[2] = 0;
+	DUniversityNumber[2] = 0;
+	DAge18_30Number[2] = 0;
+	DAge31_45Number[2] = 0;
+	DAge46_60Number[2] = 0;
+	DAge61Number[2] = 0;
+	DMale[2] = 0;
+	DFemale[2] = 0;
+	FormerSUNumber[4].Ukraine[2] = 0;
+	MiddleEastNumber[4].Lebanon[2] = 0;
+	OtherNumber[4].Anguilla[2] = 0;
+	OtherNumber[4].Anguilla[2] = 0;
 	for (let i = 0; i < DiasporaCopy.length; i++) {
 		if (DiasporaCopy[i].CountryFinal === "Russia") {
 			RussiaNumber[2]++;
@@ -220,7 +341,7 @@ function check() {
 		document.getElementById("button_Artsakh").classList.add("hide");
 	}
 
-	if (localStorage.getItem("Diaspora") !== null || localStorage.getItem("Armenia") !== null || localStorage.getItem("Artsakh") !== null) {
+	if (ChosenPeople.length !== 0) {
 		document.getElementById("openrestart").classList.remove("hide");
 		document.getElementById("openrestart").classList.add("restart");
 		document.getElementById("openprint").classList.remove("hide");
@@ -243,6 +364,7 @@ function savedata() {
 	DiasporaData[2] = Refusers;
 	let data = JSON.stringify(DiasporaData);
 	fs.writeFileSync('src/data/diaspora.json', data);
+
 }
 function clearstorage() {
 	DiasporaData[1] = [];
@@ -285,11 +407,34 @@ function Print(people, idname) {
 						<td>${id - 1}</td>
 						<td>${person.Code}</td>
 						<td>${person.CountryFinal}</td>
+						<td>${person.Country}</td>
 						<td>${person.Gender}</td>
 						<td>${person.AGEGroup}</td>
 						<td>${person.Education}</td>
 						<td>
-							<button class="butt_changing" onclick="changeConfirm('${id - 1}','${person.Code}', '${person.CountryFinal}', '${person.Gender}', '${person.AGEGroup}', '${person.Education}')">Փոխարինել</button>
+							<button class="butt_changing" onclick="changeConfirm('${id - 1}','${person.Code}', '${person.CountryFinal}', '${person.Gender}', '${person.AGEGroup}', '${person.Education}', '${person.Country}')">Փոխարինել</button>
+						</td>
+					</tr >
+	`
+		)
+		.join("");
+}
+function PrintChange(people, idname, id2, code2, country2, gender2, age2, education2, percountry2) {
+	let id = 1;
+	document.getElementById(idname).innerHTML = people
+		.map(
+			person =>
+				`
+					<tr id="${'myid' + id++}">
+						<td>${id - 1}</td>
+						<td>${person.Code}</td>
+						<td>${person.CountryFinal}</td>
+						<td>${person.Country}</td>
+						<td>${person.Gender}</td>
+						<td>${person.AGEGroup}</td>
+						<td>${person.Education}</td>
+						<td>
+							<button class="butt_changing" onclick="change('${id - 1}','${person.Code}', '${person.CountryFinal}', '${person.Gender}', '${person.AGEGroup}', '${person.Education}', '${person.Country}', '${id2}', '${code2}', '${country2}', '${gender2}', '${age2}', '${education2}', '${percountry2}')">Փոխարինել</button>
 						</td>
 					</tr >
 	`
@@ -297,55 +442,67 @@ function Print(people, idname) {
 		.join("");
 }
 
-function changeConfirm(id, code, country, gender, age, education, abcd) {
-	document.getElementById("confirmbutt").setAttribute("onclick", `change('${id}','${code}', '${country}', '${gender}', '${age}', '${education}')`);
+function changeConfirm(id, code, country, gender, age, education, percountry) {
+	//document.getElementById("confirmbutt").setAttribute("onclick", `change('${id}','${code}', '${country}', '${gender}', '${age}', '${education}')`);
 	document.getElementById("confirm_Contenier").classList.remove("hide");
-	document.getElementById("confirmCode").innerHTML = code;
+	document.getElementById("confirmCode").innerHTML = code + ", " + country + ", " + percountry + ", " + gender + ", " + age + ", " + education;
 
+	let arrayDifference = getDifference(getDifference(Diaspora, Refusers), ChosenPeople);
+	console.log(arrayDifference);
+	let changeArr = [];
+	let changeArr1 = [];
+	let changeArr2 = [];
+	let changeArr3 = [];
+	let changeArr4 = [];
+	let changeArr5 = [];
+	let changeArr6 = [];
+	let changeArr7 = [];
+	for (let i = 0; arrayDifference.length > i; i++) {
+		if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender === gender && arrayDifference[i].Education === education && arrayDifference[i].CountryFinal === country && arrayDifference[i].Country === percountry) {
+			changeArr1.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup !== age && arrayDifference[i].Gender === gender && arrayDifference[i].Education === education && arrayDifference[i].CountryFinal === country && arrayDifference[i].Country === percountry) {
+			changeArr3.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender !== gender && arrayDifference[i].Education === education && arrayDifference[i].CountryFinal === country && arrayDifference[i].Country === percountry) {
+			changeArr4.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender === gender && arrayDifference[i].Education !== education && arrayDifference[i].CountryFinal === country && arrayDifference[i].Country === percountry) {
+			changeArr5.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender === gender && arrayDifference[i].Education === education && arrayDifference[i].CountryFinal === country && arrayDifference[i].Country !== percountry) {
+			changeArr6.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender === gender && arrayDifference[i].Education === education && arrayDifference[i].CountryFinal !== country) {
+			changeArr7.push(arrayDifference[i]);
+		}
+	}
+	changeArr = [...changeArr1, ...changeArr2, ...changeArr3, ...changeArr4, ...changeArr5, ...changeArr6, ...changeArr7];
+	PrintChange(changeArr, "changetable", id, code, country, gender, age, education, percountry);
 }
 
-function change(id, code, country, gender, age, education) {
-	let arrayDifference = getDifference(getDifference(Diaspora, Refusers), ChosenPeople);
-
-	let arrayforchange = arrayDifference.filter(peopledata => peopledata.AGEGroup === age && peopledata.Gender === gender && peopledata.Education === education && peopledata.CountryFinal === country);
-	if (arrayforchange.length !== 0) {
-
-		const random = Math.floor(Math.random() * arrayforchange.length);
-		for (let i = 0; ChosenPeople.length > i; i++) {
-			if (ChosenPeople[i].Code === code) {
-				ChosenPeople[i].Code = arrayforchange[random].Code;
-				console.log("hello");
-			}
-		}
-		document.getElementById(id).innerHTML = `
-		<tr id="${arrayforchange[random].Code}">
+function change(id, code, country, gender, age, education, percountry, id2, code2, country2, gender2, age2, education2, percountry2) {
+	console.log(id, code, country, gender, age, education, percountry);
+	document.getElementById(id2).innerHTML = `
+		<tr id="${id}">
 			<td>${id}</td>
-			<td>${arrayforchange[random].Code}</td>
-			<td>${arrayforchange[random].CountryFinal}</td>
-			<td>${arrayforchange[random].Gender}</td>
-			<td>${arrayforchange[random].AGEGroup}</td>
-			<td>${arrayforchange[random].Education}</td>
+			<td>${code}</td>
+			<td>${country}</td>
+			<td>${percountry}</td>
+			<td>${gender}</td>
+			<td>${age}</td>
+			<td>${education}</td>
 			<td>
-				<button class="butt_changing" onclick="changeConfirm('${id}','${arrayforchange[random].Code}', '${arrayforchange[random].CountryFinal}', '${arrayforchange[random].Gender}', '${arrayforchange[random].AGEGroup}', '${arrayforchange[random].Education}')">Փոխարինել</button>
+				<button class="butt_changing" onclick="changeConfirm('${id}','${code}', '${country}', '${gender}', '${age}', '${education}', '${percountry}')">Փոխարինել</button>
 			</td>
 		</tr >
 		`;
-		let refData = {
-			"Code": code,
-			"Gender": gender,
-			"Education": education,
-			"AGEGroup": age,
-			"CountryFinal": country,
-		};
-		console.log(refData);
-		Refusers.push(refData);
-		savedata();
-		closewindow('confirm_Contenier');
+	let refData = {
+		"Code": code,
+		"Gender": gender,
+		"Education": education,
+		"AGEGroup": age,
+		"CountryFinal": country,
+	};
+	Refusers.push(refData);
+	savedata();
+	closewindow('confirm_Contenier');
 
-	} else {
-		closewindow('confirm_Contenier');
-		openrestart('none_Contenier');
-	}
 }
 
 function deleteperson(array) {
@@ -713,6 +870,7 @@ function plus(percode, genderPerson, educationPerson, agePerson, countryPerson, 
 		}
 	};
 	deleteperson([...new Set(exarray)]);
+
 	getNumbers();
 
 }
@@ -725,7 +883,9 @@ function getAllIndexespushdell(arr, val) {
 	while ((i = arr2.indexOf(val, i + 1)) !== -1) {
 		indexes.push(i);
 	}
+
 	for (let i = 0; i < indexes.length; i++) {
+		console.log(Diaspora[indexes[i]]);
 		plus(Diaspora[indexes[i]].Code, Diaspora[indexes[i]].Gender, Diaspora[indexes[i]].Education, Diaspora[indexes[i]].AGEGroup, Diaspora[indexes[i]].CountryFinal, Diaspora[indexes[i]].country);
 
 	}
@@ -733,30 +893,35 @@ function getAllIndexespushdell(arr, val) {
 }
 
 function getMultipleRandom(allcou, couname, num) {
-	let coudata = [];
-	let i = -1;
-	while ((i = allcou.indexOf(couname, i + 1)) !== -1) {
-		coudata.push(i);
+	let chgitem2 = true;
+	let winer;
+	while (chgitem2) {
+		let coudata = [];
+		let i = -1;
+		while ((i = allcou.indexOf(couname, i + 1)) !== -1) {
+			coudata.push(i);
+
+		}
+		const shuffled = [...coudata].sort(() => 0.5 - Math.random());
+		winer = shuffled.slice(0, num);
+		if (winer.length === num) {
+			break;
+		}
 	}
-	const shuffled = [...coudata].sort(() => 0.5 - Math.random());
-	return shuffled.slice(0, num);
+	return winer;
 }
 function randomPerson(allcou) {
-	const shuffled = [...allcou].sort(() => 0.5 - Math.random());
+	let array = [];
+
+	for (let i = 0; allcou.length > i; i++) {
+		if (allcou[i] !== undefined) {
+			array.push(allcou[i]);
+		}
+	}
+	const shuffled = [...array].sort(() => 0.5 - Math.random());
 	return shuffled.slice(0, 1);
 }
 function diasporaExport() {
-	let info = [];
-	ChosenPeople.forEach((element, index, array) => {
-		info.push([index + 1, element.Code, element.Education, element.Gender, element.AGEGroup, element.CountryFinal, element.Country]);
-	});
-	var doc = new jsPDF();
-	doc.autoTable({
-		head: [["id", "Code", "Education", "Gender", "AGEGroup", "CountryFinal", "Country"]],
-		body: info,
-		theme: 'grid'
-	});
-
 	function addZero(i) {
 		if (i < 10) { i = "0" + i; }
 		return i;
@@ -769,69 +934,166 @@ function diasporaExport() {
 	month = (month < 10 ? '0' : '') + month;
 	let day = date.getDate();
 	day = (day < 10 ? '0' : '') + day;
-	let filename = process.env.USERPROFILE + "/Downloads/" + "Diaspora Results " + date.getFullYear() + '-' + month + '-' + day + " " + h + "_" + m + "_" + s + ".pdf";
-	console.log(filename);
-	doc.save(filename);
+	let filename = process.env.USERPROFILE + "/Downloads/" + "Diaspora Results " + date.getFullYear() + '-' + month + '-' + day + " " + h + "_" + m + "_" + s + ".xlsx";
+	
+	var workBook = xlsx.utils.book_new();
+	var workShet = xlsx.utils.json_to_sheet(ChosenPeople);
+	xlsx.utils.book_append_sheet(workBook, workShet);
+	xlsx.writeFile(workBook, filename);
 	closewindow('print_Contenier');
-	openrestart('thesave_Contenier')
+	openrestart('thesave_Contenier');
 };
 
 function button_Diaspora() {
+	DiasporaCopy = Diaspora;
 	ChosenPeople = [];
-	/*----------------------------------------------------------------------------------------------*/
 
-	check();
-	/*----------------------------------------------------------------------------------------------*/
-	let chgitem = true;
-	while (chgitem) {
+	let trueFalse = true;
+	let trueFalse2 = true;
+	while (trueFalse2) {
+		Diaspora = JSON.parse(JSON.stringify(DiasporaData[0]));
+		DiasporaCopy = JSON.parse(JSON.stringify(DiasporaData[0]));
+		ChosenPeople = [];
+		RussiaNumber = [0, 39, 0, 0];
+		USANumber = [0, 20, 0, 0];
+		FranceNumber = [0, 9, 0, 0];
+		GeorgiaNumber = [0, 6, 0, 0];
+		EuropeNumber = [0, 6, 0, 0, {
+			"Austria": [0, 1, 0, 0, false],
+			"Belgium": [0, 1, 0, 0, false],
+			"Cyprus": [0, 1, 0, 0, false],
+			"CzechRepublic": [0, 1, 0, 0, false],
+			"Denmark": [0, 1, 0, 0, false],
+			"Estonia": [0, 1, 0, 0, false],
+			"Finland": [0, 1, 0, 0, false],
+			"Germany": [0, 1, 0, 0, false],
+			"Greece": [0, 1, 0, 0, false],
+			"Ireland": [0, 1, 0, 0, false],
+			"Italy": [0, 1, 0, 0, false],
+			"Netherlands": [0, 1, 0, 0, false],
+			"Poland": [0, 1, 0, 0, false],
+			"Romania": [0, 1, 0, 0, false],
+			"Serbia": [0, 1, 0, 0, false],
+			"Slovakia": [0, 1, 0, 0, false],
+			"Spain": [0, 1, 0, 0, false],
+			"Sweden": [0, 1, 0, 0, false],
+			"Switzerland": [0, 1, 0, 0, false],
+			"eUK": [0, 1, 0, 0, false]
+		}];
+		FormerSUNumber = [0, 6, 0, 0, {
+			"Belarus": [0, 1, 0, 0, false],
+			"Kazakhstan": [0, 1, 0, 0, false],
+			"Latvia": [0, 1, 0, 0, false],
+			"Turkmenistan": [0, 1, 0, 0, false],
+			"Ukraine": [0, 3, 0, 0, true]
+		}];
+		MiddleEastNumber = [0, 4, 0, 0, {
+			"Israel": [0, 1, 0, 0, false],
+			"Lebanon": [0, 2, 0, 0, true],
+			"mUAE": [0, 1, 0, 0, false]
+		}];
+		LatinAmericaNumber = [0, 3, 0, 0, {
+			"Argentina": [0, 2, 0, 0, true],
+			"Brazil": [0, 1, 0, 0, false]
+		}];
+		OtherNumber = [0, 3, 0, 0, {
+			"Anguilla": [0, 1, 0, 0, true],
+			"Australia": [0, 1, 0, 0, false],
+			"Canada": [0, 2, 0, 0, true],
+			"Chile": [0, 1, 0, 0, false],
+			"Colombia": [0, 1, 0, 0, false],
+			"Egypt": [0, 1, 0, 0, false],
+			"Ethiopia": [0, 1, 0, 0, false],
+			"Ghana": [0, 1, 0, 0, false],
+			"India": [0, 1, 0, 0, false],
+			"Korea": [0, 1, 0, 0, false],
+			"SaudiArabia": [0, 1, 0, 0, false],
+			"SriLanka": [0, 1, 0, 0, false],
+			"SaudiArabia": [0, 1, 0, 0, false],
+			"Uruguay": [0, 1, 0, 0, false],
+			"WesternSahara": [0, 1, 0, 0, false]
+		}];
+		TurkeyNumber = [0, 2, 0, 0];
+		IranNumber = [0, 2, 0, 0];
+		DSecondaryNumber = [0, 25, 0, 0];
+		DProfessionalNumber = [0, 25, 0, 0];
+		DUniversityNumber = [0, 50, 0, 0];
+		DAge18_30Number = [0, 28, 0, 0];
+		DAge31_45Number = [0, 30, 0, 0];
+		DAge46_60Number = [0, 24, 0, 0];
+		DAge61Number = [0, 18, 0, 0];
+		DFemale = [0, 50, 0, 0];
+		DMale = [0, 50, 0, 0];
+		getNumbers();
 
 		if (RussiaNumber[3] === 0) {
+			console.log("1");
 			getAllIndexespushdell(DiasporaCopy, "Russia");
 		} if (USANumber[3] === 0) {
+			console.log("2");
 			getAllIndexespushdell(DiasporaCopy, "USA");
 		} if (FranceNumber[3] === 0) {
+			console.log("3");
 			getAllIndexespushdell(DiasporaCopy, "France");
 		} if (GeorgiaNumber[3] === 0) {
+			console.log("4");
 			getAllIndexespushdell(DiasporaCopy, "Georgia");
 		} if (EuropeNumber[3] === 0) {
+			console.log("5");
 			getAllIndexespushdell(DiasporaCopy, "Europe (excl. France)");
 		} if (FormerSUNumber[3] === 0) {
+			console.log("6");
 			getAllIndexespushdell(DiasporaCopy, "Former SU (excl. RU & Geo)");
 		} if (MiddleEastNumber[3] === 0) {
+			console.log("7");
 			getAllIndexespushdell(DiasporaCopy, "Middle East (excl. Tr & Ir)");
 		} if (LatinAmericaNumber[3] === 0) {
+			console.log("8");
 			getAllIndexespushdell(DiasporaCopy, "Latin America");
 		} if (OtherNumber[3] === 0) {
+			console.log("9");
 			getAllIndexespushdell(DiasporaCopy, "Other");
 		} if (TurkeyNumber[3] === 0) {
+			console.log("10");
 			getAllIndexespushdell(Diaspora, "Turkey");
 		} if (IranNumber[3] === 0) {
+			console.log("11");
 			getAllIndexespushdell(DiasporaCopy, "Iran");
 		}
 		if (DSecondaryNumber[3] === 0) {
-			getAllIndexespushdell(DiasporaCopy, "Secondary or unfinished secondary");
+			console.log("12");
 		} if (DProfessionalNumber[3] === 0) {
+			getAllIndexespushdell(DiasporaCopy, "Secondary or unfinished secondary");
+			console.log("13");
 			getAllIndexespushdell(DiasporaCopy, "Professional or vocational");
 		} if (DUniversityNumber[3] === 0) {
+			console.log("14");
 			getAllIndexespushdell(DiasporaCopy, "University or postgraduate");
 		}
 		if (DAge18_30Number[3] === 0) {
+			console.log("15");
 			getAllIndexespushdell(DiasporaCopy, "18-30");
 		} if (DAge31_45Number[3] === 0) {
+			console.log("16");
 			getAllIndexespushdell(DiasporaCopy, "31-40");
 		} if (DAge46_60Number[3] === 0) {
+			console.log("17");
 			getAllIndexespushdell(DiasporaCopy, "46-60");
 		} if (DAge61Number[3] === 0) {
+			console.log("18");
 			getAllIndexespushdell(DiasporaCopy, "61+");
+
 		}
 		if (DFemale[3] === 0) {
 			getAllIndexespushdell(DiasporaCopy, "Female");
 		} if (DMale[3] === 0) {
 			getAllIndexespushdell(DiasporaCopy, "Male");
 		}
-
 		let arr = DiasporaCopy.map(function (per) {
 			return per.Country;
+		});
+		let arred = DiasporaCopy.map(function (per) {
+			return per.Education;
 		});
 
 		let indexes = [];
@@ -851,51 +1113,69 @@ function button_Diaspora() {
 		} if (OtherNumber[4].Canada[0] !== OtherNumber[4].Canada[1]) {
 			let randomCanada = getMultipleRandom(arr, "Canada", OtherNumber[4].Canada[1]);
 			indexes = indexes.concat(randomCanada);
+		} if (IranNumber[0] !== IranNumber[1]) {
+			let randomIran = getMultipleRandom(arr, "Iran", IranNumber[1]);
+			indexes = indexes.concat(randomIran);
+		} if (TurkeyNumber[0] !== TurkeyNumber[1]) {
+			let randomTurkey = getMultipleRandom(arr, "Turkey", TurkeyNumber[1]);
+			indexes = indexes.concat(randomTurkey);
+		} if (DSecondaryNumber[0] !== DSecondaryNumber[1]) {
+			let randomSe = getMultipleRandom(arred, "Secondary or unfinished secondary", DSecondaryNumber[1]);
+			indexes = indexes.concat(randomSe);
+
 		}
 
 		for (let i = 0; i < indexes.length; i++) {
 			indexesper.push(JSON.parse(`{"Code": "${DiasporaCopy[indexes[i]].Code}", "Gender": "${DiasporaCopy[indexes[i]].Gender}", "Education": "${DiasporaCopy[indexes[i]].Education}", "AGEGroup": "${DiasporaCopy[indexes[i]].AGEGroup}", "CountryFinal": "${DiasporaCopy[indexes[i]].CountryFinal}", "Country" :"${DiasporaCopy[indexes[i]].Country}"}`));
-			/*hanel patadir*/check();
 		}
+
 		indexesper.forEach(element => plus(element.Code, element.Gender, element.Education, element.AGEGroup, element.CountryFinal, element.Country));
 
-		while (ChosenPeople.length !== 200) {
+		while (ChosenPeople.length !== 100) {
+			if ((RussiaNumber[0] !== RussiaNumber[1] && RussiaNumber[3] < 0) || (USANumber[0] !== USANumber[1] && USANumber[3] < 0) || (FranceNumber[0] !== FranceNumber[1] && FranceNumber[3] < 0) || (GeorgiaNumber[0] !== GeorgiaNumber[1] && GeorgiaNumber[3] < 0) || (TurkeyNumber[0] !== TurkeyNumber[1] && TurkeyNumber[3] < 0) || (IranNumber[0] !== IranNumber[1] && IranNumber[3] < 0) || (EuropeNumber[0] !== EuropeNumber[1] && EuropeNumber[3] < 0) || (FormerSUNumber[0] !== FormerSUNumber[1] && FormerSUNumber[3] < 0) || (MiddleEastNumber[0] !== MiddleEastNumber[1] && MiddleEastNumber[3] < 0) || (LatinAmericaNumber[0] !== LatinAmericaNumber[1] && LatinAmericaNumber[3] < 0) || (OtherNumber[0] !== OtherNumber[1] && OtherNumber[3] < 0) || (DSecondaryNumber[0] !== DSecondaryNumber[1] && DSecondaryNumber[3] < 0) || ([0] !== DProfessionalNumber[1] && DProfessionalNumber[3] < 0) || ([0] !== DUniversityNumber[1] && DUniversityNumber[3] < 0)) {
+				break;
+			}
 			if (DiasporaCopy.length === 0) {
 				break;
 			}
 			let winPerson = randomPerson(DiasporaCopy);
 			plus(winPerson[0].Code, winPerson[0].Gender, winPerson[0].Education, winPerson[0].AGEGroup, winPerson[0].CountryFinal, winPerson[0].Country);
 		}
-		if (ChosenPeople.length === 200) {
-			chgitem = false;
-		} else {
-			ChosenPeople = [];
+		if (ChosenPeople.length === 100) {
+			trueFalse2 = false;
+			break;
+		}
+
+	}
+	while (trueFalse) {
+		if (ChosenPeople.length === 100) {
+			if (ChosenPeople.indexOf(undefined) === -1) {
+				trueFalse = false;
+				break;
+			} else {
+				getNumberChosenPeople();
+				while (ChosenPeople.length !== 100) {
+
+					if ((RussiaNumber[0] !== RussiaNumber[1] && RussiaNumber[3] < 0) || (USANumber[0] !== USANumber[1] && USANumber[3] < 0) || (FranceNumber[0] !== FranceNumber[1] && FranceNumber[3] < 0) || (GeorgiaNumber[0] !== GeorgiaNumber[1] && GeorgiaNumber[3] < 0) || (TurkeyNumber[0] !== TurkeyNumber[1] && TurkeyNumber[3] < 0) || (IranNumber[0] !== IranNumber[1] && IranNumber[3] < 0) || (EuropeNumber[0] !== EuropeNumber[1] && EuropeNumber[3] < 0) || (FormerSUNumber[0] !== FormerSUNumber[1] && FormerSUNumber[3] < 0) || (MiddleEastNumber[0] !== MiddleEastNumber[1] && MiddleEastNumber[3] < 0) || (LatinAmericaNumber[0] !== LatinAmericaNumber[1] && LatinAmericaNumber[3] < 0) || (OtherNumber[0] !== OtherNumber[1] && OtherNumber[3] < 0) || (DSecondaryNumber[0] !== DSecondaryNumber[1] && DSecondaryNumber[3] < 0) || ([0] !== DProfessionalNumber[1] && DProfessionalNumber[3] < 0) || ([0] !== DUniversityNumber[1] && DUniversityNumber[3] < 0)) {
+						trueFalse = false;
+						break;
+					}
+					if (DiasporaCopy.length === 0) {
+						trueFalse = false;
+						break;
+					}
+					let winPerson = randomPerson(DiasporaCopy);
+					plus(winPerson[0].Code, winPerson[0].Gender, winPerson[0].Education, winPerson[0].AGEGroup, winPerson[0].CountryFinal, winPerson[0].Country);
+				}
+			}
 		}
 	}
+
 	Print(ChosenPeople, "diasporatable");
 	savedata();
 	check();
 
-	console.log(ChosenPeople);
-
 }
-function sortall() {
-
-	Numbercoun.sort((a, b) => {
-		return a.num - b.num;
-	});
-	Numbered.sort((a, b) => {
-		return a.num - b.num;
-	});
-	Numberage.sort((a, b) => {
-		return a.num - b.num;
-	});
-	Numbergender.sort((a, b) => {
-		return a.num - b.num;
-	});
-
-}
-
 closewindow('restart_Contenier');
 closewindow('none_Contenier');
 closewindow('confirm_Contenier');
@@ -911,12 +1191,6 @@ if (ChosenPeople.length === 0) {
 
 
 
-/* var xlsx = require('xlsx');
-var workBook = xlsx.utils.book_new();
-var workShet = xlsx.utils.json_to_sheet(ChosenPeople);
-xlsx.utils.book_append_sheet(workBook, workShet);
-xlsx.writeFile(workBook, "C:/Users/zaqoy/OneDrive/Desktop/convertedJsonExcel.xlsx");
- */
 
 
 

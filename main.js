@@ -24,7 +24,7 @@ const template = [
 		label: 'File',
 		submenu: [
 			{
-				role: 'exit'
+				role: 'quit'
 			}
 		]
 	},

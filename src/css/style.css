@@ -92,6 +92,7 @@
 .none_Contenier,
 .print_Contenier,
 .thesave_Contenier {
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -103,7 +104,6 @@
 
 .restart,
 .print {
-
 	position: absolute;
 	height: 33px;
 	border-radius: 5px;
@@ -121,7 +121,7 @@
 
 .print {
 	top: 8px;
-	width: 120px;
+	width: 110px;
 	left: 10px;
 	color: #3fa785;
 	background-color: #d0f4e8;
@@ -201,5 +201,39 @@
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+}
 
+.changetable {
+	width: 85%;
+	max-width: 1200px;
+	height: 99%;
+	overflow-y: scroll;
+}
+
+.tableforchange {
+	margin-left: 5px;
+	margin-right: 0px;
+}
+
+.closechange {
+	margin-right: 3px;
+}
+
+::-webkit-scrollbar {
+	width: 20px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #d6dee1;
+	border-radius: 20px;
+	border: 6px solid transparent;
+	background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #a8bbbf;
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +7,8 @@
 	<title>Future Armenian</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-	<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-	<button class="hide" id="openprint" onclick="openrestart('print_Contenier')">Generate PDF</button>
+	<button class="hide" id="openprint" onclick="openrestart('print_Contenier')">Արտահանել</button>
 	<button class="hide" id="openrestart" onclick="openrestart('restart_Contenier')">Վերսկսել</button>
 	<div class="thesave_Contenier hide" id="thesave_Contenier">
 		<div class="window_none">
@@ -27,7 +23,7 @@
 		</div>
 	</div>
 	<div class="print_Contenier hide" id="print_Contenier">
-		<div class="window_restart">
+		<div class="window_restart ss-container"  >
 			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('print_Contenier')">
 			<p class="restart_p">Սեղմելով կոճակներից որևէ մեկի վրա <br> դուք արտահանելու եք ընտրված անձանց<br><br>
 			<div class="printbutdiv">
@@ -39,12 +35,15 @@
 		</div>
 	</div>
 	<div class="confirm_Contenier hide" id="confirm_Contenier">
-		<div class="window_restart">
-			<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('confirm_Contenier')">
-			<p class="restart_p">Սեղմելով հաստատել կոճակի վրա <br> դուք փոխելու եք <b id="confirmCode"></b>
-				անձնակն<br>համարով անձին բայց նաև կարող եք<br>դադարեցնել այս գործընթացը<br>սեղմելով <img
+		<div class="window_restart changetable">
+			<img src="img/close.svg" alt="Իքս" class="close_window closechange" onclick="closewindow('confirm_Contenier')">
+			<p class="restart_p">Սեղմելով կոճակներից որևէ մեկի վրա դուք փոխելու եք <br><b id="confirmCode"></b>
+				<br>տվյալներով անձին բայց նաև կարող եքդադարեցնել այս գործընթացը <br> սեղմելով <img
 					src="img/close.svg" alt="Իքս" width="13px"> կոճակի վրա</p>
-			<button class="b_restart" id="confirmbutt" onclick="clearstorage()">Հաստատել</button>
+					<table class="styled-table tableforchange">
+						<tbody id="changetable">
+						</tbody>
+					</table>
 		</div>
 	</div>
 	<div class="restart_Contenier hide" id="restart_Contenier">
