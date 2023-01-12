@@ -7,7 +7,21 @@ let Diaspora = JSON.parse(JSON.stringify(DiasporaData[0]));
 let DiasporaCopy = JSON.parse(JSON.stringify(DiasporaData[0]));
 let ChosenPeople = JSON.parse(JSON.stringify(DiasporaData[1]));
 let Refusers = JSON.parse(JSON.stringify(DiasporaData[2]));
+//Armenia
+let Armrawdata = fs.readFileSync('src/data/armenia.json');
+let ArmeniaData = JSON.parse(Armrawdata);
+let Armenia = JSON.parse(JSON.stringify(ArmeniaData[0]));
+let ArmeniaCopy = JSON.parse(JSON.stringify(ArmeniaData[0]));
+let ArmChosenPeople = JSON.parse(JSON.stringify(ArmeniaData[1]));
+let ArmRefusers = JSON.parse(JSON.stringify(ArmeniaData[2]));
 
+
+
+//Armenia//
+let ArmUrbanNumber = [0, 27, 0, 0];
+let ArmCountryNumber = [0, 36, 0, 0];
+let YerevanNumber = [0, 37, 0, 0];
+//Armenia//
 
 let RussiaNumber = [0, 39, 0, 0];
 let USANumber = [0, 20, 0, 0];
@@ -79,6 +93,16 @@ let DAge46_60Number = [0, 24, 0, 0];
 let DAge61Number = [0, 18, 0, 0];
 let DFemale = [0, 50, 0, 0];
 let DMale = [0, 50, 0, 0];
+//Armenia
+let ArmSecondaryNumber = [0, 21, 0, 0];
+let ArmProfessionalNumber = [0, 55, 0, 0];
+let ArmUniversityNumber = [0, 24, 0, 0];
+let ArmAge18_30Number = [0, 22, 0, 0];
+let ArmAge31_45Number = [0, 31, 0, 0];
+let ArmAge46_60Number = [0, 23, 0, 0];
+let ArmAge61Number = [0, 24, 0, 0];
+let ArmFemale = [0, 53, 0, 0];
+let ArmMale = [0, 47, 0, 0];
 
 function getNumberChosenPeople() {
 	/*	RussiaNumber[2] = 0;
@@ -205,6 +229,55 @@ function getNumberChosenPeople() {
 		}
 	}
 }
+
+//Armenia
+function getNumberArmChosenPeople() {
+
+	for (let i = 0; ArmChosenPeople.length > i; i++) {
+		const index = ArmChosenPeople.indexOf(undefined);
+		if (index > -1) {
+			ArmChosenPeople.splice(index, 1);
+		}
+	}
+
+	ArmeniaCopy = getDifference(Armenia, ArmChosenPeople);
+
+	for (let i = 0; ArmChosenPeople.length > i; i++) {
+		if (ArmChosenPeople[i].CountryFinal === "Urban") {
+			ArmUrbanNumber[0]++;
+		} else if (ArmChosenPeople[i].CountryFinal === "ACountry") {
+			ArmCountryNumber[0]++;
+		} else if (ArmChosenPeople[i].CountryFinal === "Yerevan") {
+			YerevanNumber[0]++;
+	
+		if (ArmChosenPeople[i].Education === "Secondary or unfinished secondary") {
+			ArmSecondaryNumber[0]++;
+		} else if (ArmChosenPeople[i].Education === "Professional or vocational") {
+			ArmProfessionalNumber[0]++;
+		} else if (ArmChosenPeople[i].Education === "University or postgraduate") {
+			ArmUniversityNumber[0]++;
+		}
+
+		if (ArmChosenPeople[i].AGEGroup === "31-45") {
+			ArmAge31_45Number[0]++;
+
+		} else if (ArmChosenPeople[i].AGEGroup === "18-30") {
+			ArmAge18_30Number[0]++;
+
+		} else if (ArmChosenPeople[i].AGEGroup === "46-60") {
+			ArmAge46_60Number[0]++;
+		} else if (ArmChosenPeople[i].AGEGroup === "61+") {
+			ArmAge61Number[0]++;
+		}
+
+		if (ArmChosenPeople[i].Gender === "Male") {
+			ArmMale[0]++;
+
+		} else {
+			ArmFemale[0]++;
+		}
+	}
+}
 function getNumbers() {
 	RussiaNumber[2] = 0;
 	USANumber[2] = 0;
@@ -318,6 +391,61 @@ function getNumbers() {
 		} else {
 			DFemale[2]++;
 			DFemale[3] = DFemale[2] - DFemale[1] + DFemale[0];
+		}
+	}
+
+}
+
+//Armenia
+function getNumbers() {
+	ArmUrbanNumber[2] = 0;
+	ArmCountryNumber[2] = 0;
+	YerevanNumber[2] = 0;
+	for (let i = 0; i < ArmeniaCopy.length; i++) {
+		if (ArmeniaCopy[i].CountryFinal === "Urban") {
+			ArmUrbanNumber[2]++;
+			ArmUrbanNumber[3] = ArmUrbanNumber[2] - ArmUrbanNumber[1] + ArmUrbanNumber[0];
+		} else if (ArmeniaCopy[i].CountryFinal === "Country") {
+			ArmCountryNumber[2]++;
+			ArmCountryNumber[3] = ArmCountryNumber[2] - ArmCountryNumber[1] + ArmCountryNumber[0];
+		} else if (ArmeniaCopy[i].CountryFinal === "Yerevan") {
+			YerevanNumber[2]++;
+			YerevanNumber[3] = YerevanNumber[2] - YerevanNumber[1] + YerevanNumber[0];
+		
+		if (ArmeniaCopy[i].Education === "Secondary or unfinished secondary") {
+			ArmSecondaryNumber[2]++;
+			ArmSecondaryNumber[3] = ArmSecondaryNumber[2] - ArmSecondaryNumber[1] + ArmSecondaryNumber[0];
+		} else if (ArmeniaCopy[i].Education === "Professional or vocational") {
+			ArmProfessionalNumber[2]++;
+			ArmProfessionalNumber[3] = ArmProfessionalNumber[2] - ArmProfessionalNumber[1] + ArmProfessionalNumber[0];
+		} else if (ArmeniaCopy[i].Education === "University or postgraduate") {
+			ArmUniversityNumber[2]++;
+			ArmUniversityNumber[3] = ArmUniversityNumber[2] - ArmUniversityNumber[1] + DUniverArmUniversityNumberityNumber[0];
+		}
+
+		if (ArmeniaCopy[i].AGEGroup === "31-45") {
+			ArmAge31_45Number[2]++;
+			ArmAge31_45Number[3] = ArmAge31_45Number[2] - ArmAge31_45Number[1] + ArmAge31_45Number[0];
+
+		} else if (ArmeniaCopy[i].AGEGroup === "18-30") {
+			ArmAge18_30Number[2]++;
+			ArmAge18_30Number[3] = ArmAge18_30Number[2] - ArmAge18_30Number[1] + ArmAge18_30Number[0];
+
+		} else if (ArmeniaCopy[i].AGEGroup === "46-60") {
+			ArmAge46_60Number[2]++;
+			ArmAge46_60Number[3] = ArmAge46_60Number[2] - ArmAge46_60Number[1] + ArmAge46_60Number[0];
+		} else if (ArmeniaCopy[i].AGEGroup === "61+") {
+			ArmAge61Number[2]++;
+			ArmAge61Number[3] = ArmAge61Number[2] - ArmAge61Number[1] + ArmAge61Number[0];
+		}
+
+		if (ArmeniaCopy[i].Gender === "Male") {
+			ArmMale[2]++;
+			ArmMale[3] = ArmMale[2] - ArmMale[1] + ArmMale[0];
+
+		} else {
+			ArmFemale[2]++;
+			ArmFemale[3] = ArmFemale[2] - ArmFemale[1] + ArmFemale[0];
 		}
 	}
 
@@ -509,11 +637,24 @@ function deleteperson(array) {
 		DiasporaCopy.splice(array[i], 1);
 	}
 }
+
+function armdeleteperson(array) {
+	for (let i = 0; i < array.length; i++) {
+		ArmeniaCopy.splice(array[i], 1);
+	}
+}
+
 function pushanddel(index) {
 	ChosenPeople.push(DiasporaCopy[index]);
 	DiasporaCopy.splice(index, 1);
 }
-function plus(percode, genderPerson, educationPerson, agePerson, countryPerson, country) {
+
+function armpushanddel(index) {
+	ChosenPeople.push(ArmeniaCopy[index]);
+	DiasporaCopy.splice(index, 1);
+}
+
+function plus(percode, genderPerson, educationPerson, agePerson, countryPerson, country) { 
 	let exarray = [];
 	let caarray = [];
 	let caarray2 = [];
@@ -872,6 +1013,95 @@ function plus(percode, genderPerson, educationPerson, agePerson, countryPerson, 
 
 	getNumbers();
 }
+function armeniaplus(percode, genderPerson, educationPerson, agePerson, countryPerson, country) { 
+	let exarray = [];
+	let caarray = [];
+	let caarray2 = [];
+	let edarray = [];
+	let agearray = [];
+	let gearray = [];
+	if (countryPerson === "Urban") {
+		ArmUrbanNumber[0]++;
+		if (ArmUrbanNumber[0] === ArmUrbanNumber[1]) {
+			caarray.push("Urban");
+		}
+	} else if (countryPerson === "Country") {
+		ArmCountryNumber[0]++;
+		if (ArmCountryNumber[0] === ArmCountryNumber[1]) {
+			caarray.push("Country");
+		}
+	} else if (countryPerson === "Yerevan") {
+		YerevanNumber[0]++;
+		if (YerevanNumber[0] === YerevanNumber[1]) {
+			caarray.push("Yerevan");
+		}
+	
+	if (educationPerson === "Secondary or unfinished secondary") {
+		ArmSecondaryNumber[0]++;
+		if (ArmSecondaryNumber[0] === ArmSecondaryNumber[1]) {
+			edarray.push("Secondary or unfinished secondary");
+		}
+	} else if (educationPerson === "Professional or vocational") {
+		ArmProfessionalNumber[0]++;
+		if (ArmProfessionalNumber[0] === ArmProfessionalNumber[1]) {
+			edarray.push("Professional or vocational");
+		}
+	} else if (educationPerson === "University or postgraduate") {
+		ArmUniversityNumber[0]++;
+		if (ArmUniversityNumber[0] === ArmUniversityNumber[1]) {
+			edarray.push("University or postgraduate");
+		}
+	}
+
+	if (agePerson === "18-30") {
+		ArmAge18_30Number[0]++;
+		if (ArmAge18_30Number[0] === ArmAge18_30Number[1]) {
+			agearray.push("18-30");
+		}
+	} else if (agePerson === "31-45") {
+		ArmAge31_45Number[0]++;
+		if (ArmAge31_45Number[0] === ArmAge31_45Number[1]) {
+			agearray.push("31-45");
+		}
+	} else if (agePerson === "46-60") {
+		ArmAge46_60Number[0]++;
+		if (ArmAge46_60Number[0] === ArmAge46_60Number[1]) {
+			agearray.push("46-60");
+		}
+	} else if (agePerson === "61+") {
+		ArmAge61Number[0]++;
+		if (ArmAge61Number[0] === ArmAge61Number[1]) {
+			agearray.push("61+");
+		}
+	}
+
+	if (genderPerson === "Male") {
+		ArmMale[0]++;
+		var index = ArmeniaCopy.findIndex(item => item.Code === percode);
+		pushanddel(index);
+		if (ArmFemale[0] === ArmFemale[1]) {
+			gearray.push("Female");
+		}
+	} else {
+		ArmFemale[0]++;
+		var index = ArmeniaCopy.findIndex(item => item.Code === percode);
+		pushanddel(index);
+		if (ArmMale[0] === ArmMale[1]) {
+			gearray.push("Male");
+		}
+	}
+
+
+
+	for (let i = 0; i < ArmeniaCopy.length; i++) {
+		if (caarray.includes(ArmeniaCopy[i].CountryFinal) || caarray.includes(ArmeniaCopy[i].Country) || edarray.includes(ArmeniaCopy[i].Education) || agearray.includes(ArmeniaCopy[i].AGEGroup) || gearray.includes(ArmeniaCopy[i].Gender)) {
+			exarray.push(i);
+		}
+	};
+	deleteperson([...new Set(exarray)]);
+
+	getNumbers();
+}
 /* function getAllIndexespushdell(arr, val) {
 	let arr2 = arr.map(function (per) {
 		return per.CountryFinal;
@@ -915,7 +1145,7 @@ function randomPerson(allcou) {////////////////////////////
 	const shuffled = [...array].sort(() => 0.5 - Math.random());
 	return shuffled.slice(0, 1);
 }
-function diasporaExport() {
+function diasporaExport() { /////////////????????????????????????????????????????????????????????????
 	function addZero(i) {
 		if (i < 10) { i = "0" + i; }
 		return i;
@@ -1165,6 +1395,166 @@ function button_Diaspora() {
 	check();
 
 }
+
+function button_Armenia() {
+	ArmeniaCopy = JSON.parse(JSON.stringify(Armenia));
+	ArmChosenPeople = [];
+
+	while (true) {
+		Armenia = JSON.parse(JSON.stringify(ArmeniaData[0]));
+		ArmeniaCopy = JSON.parse(JSON.stringify(ArmeniaData[0]));
+		ArmChosenPeople = [];
+		let ArmUrbanNumber = [0, 27, 0, 0];
+		let ArmCountryNumber = [0, 36, 0, 0];
+		let YerevanNumber = [0, 37, 0, 0];
+		
+		let ArmSecondaryNumber = [0, 21, 0, 0];
+		let ArmProfessionalNumber = [0, 55, 0, 0];
+		let ArmUniversityNumber = [0, 24, 0, 0];
+		let ArmAge18_30Number = [0, 22, 0, 0];
+		let ArmAge31_45Number = [0, 31, 0, 0];
+		let ArmAge46_60Number = [0, 23, 0, 0];
+		let ArmAge61Number = [0, 24, 0, 0];
+		let ArmFemale = [0, 53, 0, 0];
+		let ArmMale = [0, 47, 0, 0];
+		getNumbers();
+		/* if (RussiaNumber[3] === 0) {
+			console.log("1");
+			getAllIndexespushdell(DiasporaCopy, "Russia");
+		} if (USANumber[3] === 0) {
+			console.log("2");
+			getAllIndexespushdell(DiasporaCopy, "USA");
+		} if (FranceNumber[3] === 0) {
+			console.log("3");
+			getAllIndexespushdell(DiasporaCopy, "France");
+		} if (GeorgiaNumber[3] === 0) {
+			console.log("4");
+			getAllIndexespushdell(DiasporaCopy, "Georgia");
+		} if (EuropeNumber[3] === 0) {
+			console.log("5");
+			getAllIndexespushdell(DiasporaCopy, "Europe (excl. France)");
+		} if (FormerSUNumber[3] === 0) {
+			console.log("6");
+			getAllIndexespushdell(DiasporaCopy, "Former SU (excl. RU & Geo)");
+		} if (MiddleEastNumber[3] === 0) {
+			console.log("7");
+			getAllIndexespushdell(DiasporaCopy, "Middle East (excl. Tr & Ir)");
+		} if (LatinAmericaNumber[3] === 0) {
+			console.log("8");
+			getAllIndexespushdell(DiasporaCopy, "Latin America");
+		} if (OtherNumber[3] === 0) {
+			console.log("9");
+			getAllIndexespushdell(DiasporaCopy, "Other");
+		} if (TurkeyNumber[3] === 0) {
+			console.log("10");
+			getAllIndexespushdell(Diaspora, "Turkey");
+		} if (IranNumber[3] === 0) {
+			console.log("11");
+			getAllIndexespushdell(DiasporaCopy, "Iran");
+		}
+		if (DSecondaryNumber[3] === 0) {
+			console.log("12");
+		} if (DProfessionalNumber[3] === 0) {
+			getAllIndexespushdell(DiasporaCopy, "Secondary or unfinished secondary");
+			console.log("13");
+			getAllIndexespushdell(DiasporaCopy, "Professional or vocational");
+		} if (DUniversityNumber[3] === 0) {
+			console.log("14");
+			getAllIndexespushdell(DiasporaCopy, "University or postgraduate");
+		}
+		if (DAge18_30Number[3] === 0) {
+			console.log("15");
+			getAllIndexespushdell(DiasporaCopy, "18-30");
+		} if (DAge31_45Number[3] === 0) {
+			console.log("16");
+			getAllIndexespushdell(DiasporaCopy, "31-40");
+		} if (DAge46_60Number[3] === 0) {
+			console.log("17");
+			getAllIndexespushdell(DiasporaCopy, "46-60");
+		} if (DAge61Number[3] === 0) {
+			console.log("18");
+			getAllIndexespushdell(DiasporaCopy, "61+");
+
+		}
+		if (DFemale[3] === 0) {
+			getAllIndexespushdell(DiasporaCopy, "Female");
+		} if (DMale[3] === 0) {
+			getAllIndexespushdell(DiasporaCopy, "Male");
+		} */
+		let arr = ArmeniaCopy.map(function (per) { ////??????????????????????????????????????????????????????????????????
+			return per.Country;
+		});
+		let arred = ArmeniaCopy.map(function (per) {
+			return per.Education;
+		});
+
+		let indexes = [];
+		let indexesper = [];
+		if (ArmUrbanNumber[4].Urban[0] !== ArmUrbanNumber[4].Urban[1]) {
+			let randomUrban = getMultipleRandom(arr, "Urban", ArmUrbanNumber[4].Urban[1]);
+			indexes = indexes.concat(randomUrban);
+		} if (ArmCountryNumber[4].Country[0] !== ArmCountryNumber[4].Country[1]) {
+			let randomCountry = getMultipleRandom(arr, "Country", ArmCountryNumber[4].Country[1]);
+			indexes = indexes.concat(randomCountry);
+		} if (YerevanNumber[4].Yerevan[0] !== YerevanNumber[4].Yerevan[1]) {
+			let randomYerevan = getMultipleRandom(arr, "Yerevan", YerevanNumber[4].Yerevan[1]);
+			indexes = indexes.concat(randomYerevan);
+		
+		} if (ArmSecondaryNumber[0] !== ArmSecondaryNumber[1]) {
+			let randomArmSe = getMultipleRandom(arred, "Secondary or unfinished secondary", ArmSecondaryNumber[1]);
+			indexes = indexes.concat(randomArmSe);
+
+		}
+
+		for (let i = 0; i < indexes.length; i++) {
+			indexesper.push(JSON.parse(`{"Code": "${ArmeniaCopy[indexes[i]].Code}", "Gender": "${ArmeniaCopy[indexes[i]].Gender}", "Education": "${ArmeniaCopy[indexes[i]].Education}", "AGEGroup": "${ArmeniaCopy[indexes[i]].AGEGroup}", "CountryFinal": "${ArmeniaCopy[indexes[i]].CountryFinal}", "Country" :"${ArmeniaCopy[indexes[i]].Country}"}`));
+		}
+
+		indexesper.forEach(element => plus(element.Code, element.Gender, element.Education, element.AGEGroup, element.CountryFinal, element.Country));
+
+		while (ArmChosenPeople.length !== 45) {
+			if ((ArmUrbanNumber[0] !== ArmUrbanNumber[1] && ArmUrbanNumber[3] < 0) || (ArmCountryNumber[0] !== ArmCountryNumber[1] && ArmCountryNumber[3] < 0) || (YerevanNumber[0] !== YerevanNumber[1] && YerevanNumber[3] < 0) || (ArmSecondaryNumber[0] !== ArmSecondaryNumber[1] && ArmSecondaryNumber[3] < 0) || ([0] !== ArmProfessionalNumber[1] && ArmProfessionalNumber[3] < 0) || ([0] !== ArmUniversityNumber[1] && ArmUniversityNumber[3] < 0)) {
+				break;
+			}
+			if (ArmeniaCopy.length === 0) {
+				break;
+			}
+			let winPerson = randomPerson(ArmeniaCopy);
+			plus(winPerson[0].Code, winPerson[0].Gender, winPerson[0].Education, winPerson[0].AGEGroup, winPerson[0].CountryFinal, winPerson[0].Country);
+		}
+
+		if (ArmChosenPeople.length === 45) {
+			while (true) {
+				if (ArmChosenPeople.length === 45) {
+					if (ArmChosenPeople.indexOf(undefined) === -1) {
+						break;
+					} else {
+						getNumberChosenPeople();
+						while (ArmChosenPeople.length !== 100) {
+							if ((ArmUrbanNumber[0] !== ArmUrbanNumber[1] && ArmUrbanNumber[3] < 0) || (ArmCountryNumber[0] !== ArmCountryNumber[1] && ArmCountryNumber[3] < 0) || (YerevanNumber[0] !== YerevanNumber[1] && YerevanNumber[3] < 0)  || (ArmSecondaryNumber[0] !== ArmSecondaryNumber[1] && ArmSecondaryNumber[3] < 0) || ([0] !== ArmProfessionalNumber[1] && ArmProfessionalNumber[3] < 0) || ([0] !== ArmUniversityNumber[1] && ArmUniversityNumber[3] < 0)) {
+								break;
+							}
+							if (ArmeniaCopy.length === 0) {
+								break;
+							}
+							let winPerson = randomPerson(ArmeniaCopy);
+							plus(winPerson[0].Code, winPerson[0].Gender, winPerson[0].Education, winPerson[0].AGEGroup, winPerson[0].CountryFinal, winPerson[0].Country);
+						}
+					}
+				}
+			}
+			if (ArmChosenPeople.length === 100) {
+				break;
+			}
+		}
+
+	}
+
+	Print(ArmChosenPeople, "armeniatable");
+	saveDataArmenia();
+	check();
+
+}
 closewindow('restart_Contenier');////////////////////////////
 closewindow('none_Contenier');////////////////////////////
 closewindow('confirm_Contenier');////////////////////////////
@@ -1172,10 +1562,10 @@ closewindow('print_Contenier');////////////////////////////
 closewindow('thesave_Contenier');////////////////////////////
 check();
 
-if (ChosenPeople.length === 0) {
+if (ArmChosenPeople.length === 0) {
 	getNumbers();
 } else {
-	Print(ChosenPeople, "diasporatable");
+	Print(ArmChosenPeople, "armeniatable");
 }
 
 
