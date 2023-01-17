@@ -1,0 +1,526 @@
+[
+	[
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "NXZ2",
+			"AGE Group": "46-60"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "FLU2",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Rural",
+			"Code": "HXI2",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "NRO8",
+			"AGE Group": "46-60"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "DHT2",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "OAD8",
+			"AGE Group": "46-60"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Rural",
+			"Code": "RHJ5",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "PVS0",
+			"AGE Group": "46-60"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "YRW6",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "ZRS4",
+			"AGE Group": "46-60"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "HGP3",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "OBX2",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "EST4",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "PMQ3",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Rural",
+			"Code": "IMR3",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Rural",
+			"Code": "DFS5",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "LOR3",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "XRQ9",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Rural",
+			"Code": "RDS9",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "DQK4",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "TIB8",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "VDY0",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Rural",
+			"Code": "DYC1",
+			"AGE Group": "46-60"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "ULT8",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "ZQT8",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "QIQ2",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "XOY5",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Rural",
+			"Code": "JLI7",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "MDG7",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "TMN9",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "UJM0",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "AJV2",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "GYF5",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "RVK4",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "EIZ7",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "FRI6",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "Professional or vocational",
+			"Area": "Rural",
+			"Code": "DHN9",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "ORT6",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "ZNY0",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "VXP3",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "WDY8",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "UAB7",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "OWT1",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "MDX5",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "VVR1",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "STY0",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "Professional or vocational",
+			"Area": "Urban",
+			"Code": "INM5",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "SJV3",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "CQP5",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "LFW9",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "YTO9",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "GAR3",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "VJD3",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "SZX4",
+			"AGE Group": "18-30"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "PUV2",
+			"AGE Group": "46-60"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "LSI1",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "UMS8",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "SMT0",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "JEX5",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "QIB6",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "BUJ6",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "USE7",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Female",
+			"Education": "University or postgraduate",
+			"Area": "Rural",
+			"Code": "PMT6",
+			"AGE Group": "31-45"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "TDV1",
+			"AGE Group": "61+"
+		},
+		{
+			"Country": "Artsakh",
+			"Gender": "Male",
+			"Education": "University or postgraduate",
+			"Area": "Urban",
+			"Code": "TIC9",
+			"AGE Group": "31-45"
+		}
+	],
+	[],
+	[]
+]

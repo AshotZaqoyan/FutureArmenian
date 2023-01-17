@@ -1,13 +1,17 @@
 const fs = require('fs');
 const xlsx = require('xlsx');
 
-let rawdata = fs.readFileSync('src/data/diaspora.json');
-let DiasporaData = JSON.parse(rawdata);
+let DiasporaData = JSON.parse(fs.readFileSync('src/data/diaspora.json'));
 let Diaspora = JSON.parse(JSON.stringify(DiasporaData[0]));
 let DiasporaCopy = JSON.parse(JSON.stringify(DiasporaData[0]));
 let ChosenPeople = JSON.parse(JSON.stringify(DiasporaData[1]));
 let Refusers = JSON.parse(JSON.stringify(DiasporaData[2]));
 
+let ArmeniaData = JSON.parse(fs.readFileSync('src/data/armenia.json'));
+let Armenia = JSON.parse(JSON.stringify(ArmeniaData[0]));
+let ArmeniaCopy = JSON.parse(JSON.stringify(ArmeniaData[0]));
+let ChosenPeopleArmenia = JSON.parse(JSON.stringify(ArmeniaData[1]));
+let RefusersArmenia = JSON.parse(JSON.stringify(ArmeniaData[2]));
 
 let RussiaNumber = [0, 39, 0, 0];
 let USANumber = [0, 20, 0, 0];
@@ -80,56 +84,24 @@ let DAge61Number = [0, 18, 0, 0];
 let DFemale = [0, 50, 0, 0];
 let DMale = [0, 50, 0, 0];
 
-function getNumberChosenPeople() {
-	/*	RussiaNumber[2] = 0;
-		USANumber[2] = 0;
-		FranceNumber[2] = 0;
-		GeorgiaNumber[2] = 0;
-		EuropeNumber[2] = 0;
-		FormerSUNumber[2] = 0;
-		MiddleEastNumber[2] = 0;
-		LatinAmericaNumber[2] = 0;
-		OtherNumber[2] = 0;
-		TurkeyNumber[2] = 0;
-		IranNumber[2] = 0;
-		DSecondaryNumber[2] = 0;
-		DProfessionalNumber[2] = 0;
-		DUniversityNumber[2] = 0;
-		DAge18_30Number[2] = 0;
-		DAge31_45Number[2] = 0;
-		DAge46_60Number[2] = 0;
-		DAge61Number[2] = 0;
-		DMale[2] = 0;
-		DFemale[2] = 0;
-		FormerSUNumber[4].Ukraine[2] = 0;
-		MiddleEastNumber[4].Lebanon[2] = 0;
-		OtherNumber[4].Anguilla[2] = 0;
-		OtherNumber[4].Anguilla[2] = 0;
-		RussiaNumber[0] = 0;
-		USANumber[0] = 0;
-		FranceNumber[0] = 0;
-		GeorgiaNumber[0] = 0;
-		EuropeNumber[0] = 0;
-		FormerSUNumber[0] = 0;
-		MiddleEastNumber[0] = 0;
-		LatinAmericaNumber[0] = 0;
-		OtherNumber[0] = 0;
-		TurkeyNumber[0] = 0;
-		IranNumber[0] = 0;
-		DSecondaryNumber[0] = 0;
-		DProfessionalNumber[0] = 0;
-		DUniversityNumber[0] = 0;
-		DAge18_30Number[0] = 0;
-		DAge31_45Number[0] = 0;
-		DAge46_60Number[0] = 0;
-		DAge61Number[0] = 0;
-		DMale[0] = 0;
-		DFemale[0] = 0;
-		FormerSUNumber[4].Ukraine[0] = 0;
-		MiddleEastNumber[4].Lebanon[0] = 0;
-		OtherNumber[4].Anguilla[0] = 0;
-		OtherNumber[4].Anguilla[0] = 0; */
+let AUrban = [0, 25, 0, 0];
+let ARual = [0, 32, 0, 0];
+let AYerevan = [0, 33, 0, 0];
 
+let ASecondaryNumber = [0, 49, 0, 0];
+let AProfessionalNumber = [0, 19, 0, 0];
+let AUniversityNumber = [0, 22, 0, 0];
+
+let AAge18_30Number = [0, 20, 0, 0];
+let AAge31_45Number = [0, 28, 0, 0];
+let AAge46_60Number = [0, 21, 0, 0];
+let AAge61Number = [0, 21, 0, 0];
+
+let AFemale = [0, 42, 0, 0];
+let AMale = [0, 48, 0, 0];
+
+
+function getNumberChosenPeople() {
 	for (let i = 0; ChosenPeople.length > i; i++) {
 		const index = ChosenPeople.indexOf(undefined);
 		if (index > -1) {
@@ -203,6 +175,54 @@ function getNumberChosenPeople() {
 		} else {
 			DFemale[0]++;
 		}
+	}
+}
+function getNumberChosenPeopleArmenia() {
+	for (let i = 0; ChosenPeopleArmenia.length > i; i++) {
+		const index = ChosenPeopleArmenia.indexOf(undefined);
+		if (index > -1) {
+			ChosenPeopleArmenia.splice(index, 1);
+		}
+	}
+
+	ArmeniaCopy = getDifference(Armenia, ChosenPeopleArmenia);
+
+	for (let i = 0; ChosenPeopleArmenia.length > i; i++) {
+		if (ChosenPeopleArmenia[i].Area === "Urban") {
+			if (ChosenPeople[i].RegionFinal === "Yerevan") {
+				AYerevan[0]++;
+			} else {
+				AUrban[0]++;
+			}
+		} else if (ChosenPeople[i].Area === "Rual") {
+			ARual[0]++;
+		}
+
+		if (ChosenPeopleArmenia[i].Education === "Secondary or unfinished secondary") {
+			ASecondaryNumber[0]++;
+		} else if (ChosenPeopleArmenia[i].Education === "Professional or vocational") {
+			AProfessionalNumber[0]++;
+		} else if (ChosenPeopleArmenia[i].Education === "University or postgraduate") {
+			AUniversityNumber[0]++;
+		}
+
+		if (ChosenPeopleArmenia[i].AGEGroup === "31-45") {
+			AAge31_45Number[0]++;
+		} else if (ChosenPeopleArmenia[i].AGEGroup === "18-30") {
+			AAge18_30Number[0]++;
+		} else if (ChosenPeopleArmenia[i].AGEGroup === "46-60") {
+			AAge46_60Number[0]++;
+		} else if (ChosenPeopleArmenia[i].AGEGroup === "61+") {
+			AAge61Number[0]++;
+		}
+
+		if (ChosenPeopleArmenia[i].Gender === "Male") {
+			AMale[0]++;
+
+		} else {
+			AFemale[0]++;
+		}
+
 	}
 }
 function getNumbers() {
@@ -322,66 +342,145 @@ function getNumbers() {
 	}
 
 }
-/*Start Functional*/
-function check() {////////////////////////////
-	if (ChosenPeople.length !== 0) {
-		document.getElementById("Diaspora").classList.remove("hide");
-		document.getElementById("button_Diaspora").classList.add("hide");
-	}
-	if (localStorage.getItem("Armenia") !== null) {
-		document.getElementById("Armenia").classList.remove("hide");
-		document.getElementById("button_Armenia").classList.add("hide");
-	}
-	if (localStorage.getItem("Artsakh") !== null) {
-		document.getElementById("Artsakh").classList.remove("hide");
-		document.getElementById("button_Artsakh").classList.add("hide");
+function getNumbersArmenia() {
+	AUrban[2] = 0;
+	ARual[2] = 0;
+	AYerevan[2] = 0;
+	ASecondaryNumber[2] = 0;
+	AProfessionalNumber[2] = 0;
+	AUniversityNumber[2] = 0;
+	AAge18_30Number[2] = 0;
+	AAge31_45Number[2] = 0;
+	AAge46_60Number[2] = 0;
+	AAge61Number[2] = 0;
+	AMale[2] = 0;
+	AFemale[2] = 0;
+
+	for (let i = 0; i < ArmeniaCopy.length; i++) {
+		if (ArmeniaCopy[i].Area === "Urban") {
+			if (ArmeniaCopy[i].Area === "Yerevan") {
+				AYerevan[2]++;
+				AYerevan[3] = AYerevan[2] - AYerevan[1] + AYerevan[0];
+			} else {
+				AUrban[2]++;
+				AUrban[3] = AUrban[2] - AUrban[1] + AUrban[0];
+			}
+		} else if (ArmeniaCopy[i].Area === "Rual") {
+			ARual[2]++;
+			ARual[3] = ARual[2] - ARual[1] + ARual[0];
+		}
+
+		if (ArmeniaCopy[i].Education === "Secondary or unfinished secondary") {
+			ASecondaryNumber[2]++;
+			ASecondaryNumber[3] = ASecondaryNumber[2] - ASecondaryNumber[1] + ASecondaryNumber[0];
+		} else if (ArmeniaCopy[i].Education === "Professional or vocational") {
+			AProfessionalNumber[2]++;
+			AProfessionalNumber[3] = AProfessionalNumber[2] - AProfessionalNumber[1] + AProfessionalNumber[0];
+		} else if (ArmeniaCopy[i].Education === "University or postgraduate") {
+			AUniversityNumber[2]++;
+			AUniversityNumber[3] = AUniversityNumber[2] - AUniversityNumber[1] + AUniversityNumber[0];
+		}
+
+		if (ArmeniaCopy[i].AGEGroup === "31-45") {
+			AAge31_45Number[2]++;
+			AAge31_45Number[3] = AAge31_45Number[2] - AAge31_45Number[1] + AAge31_45Number[0];
+
+		} else if (ArmeniaCopy[i].AGEGroup === "18-30") {
+			AAge18_30Number[2]++;
+			AAge18_30Number[3] = AAge18_30Number[2] - AAge18_30Number[1] + AAge18_30Number[0];
+
+		} else if (ArmeniaCopy[i].AGEGroup === "46-60") {
+			AAge46_60Number[2]++;
+			AAge46_60Number[3] = AAge46_60Number[2] - AAge46_60Number[1] + AAge46_60Number[0];
+		} else if (ArmeniaCopy[i].AGEGroup === "61+") {
+			AAge61Number[2]++;
+			AAge61Number[3] = AAge61Number[2] - AAge61Number[1] + AAge61Number[0];
+		}
+
+		if (ArmeniaCopy[i].Gender === "Male") {
+			AMale[2]++;
+			AMale[3] = AMale[2] - AMale[1] + AMale[0];
+
+		} else {
+			AFemale[2]++;
+			AFemale[3] = AFemale[2] - AFemale[1] + AFemale[0];
+		}
 	}
 
-	if (ChosenPeople.length !== 0) {
-		document.getElementById("openrestart").classList.remove("hide");
-		document.getElementById("openrestart").classList.add("restart");
-		document.getElementById("openprint").classList.remove("hide");
-		document.getElementById("openprint").classList.add("print");
-	} else {
-		document.getElementById("openrestart").classList.add("hide");
-		document.getElementById("openrestart").classList.remove("restart");
-		document.getElementById("openprint").classList.add("hide");
-		document.getElementById("openprint").classList.remove("print");
+}
+/*Start Functional*/
+function check() {
+	if (ChosenPeople.length !== 0 || ChosenPeopleArmenia.length !== 0) {
+		document.getElementById("startdiv").classList.add("hide");
+		document.getElementById("continuing").classList.remove("hide");
+		if (ChosenPeople.length !== 0) {
+			document.getElementById("Diaspora").classList.remove("hide");
+			document.getElementById("button_Diaspora").classList.add("act");
+			document.getElementById('button_Diaspora').onclick = null;
+		}
+		if (ChosenPeopleArmenia.length !== 0) {
+			document.getElementById("Armenia").classList.remove("hide");
+
+			document.getElementById("button_Armenia").classList.add("act");
+			document.getElementById('button_Armenia').onclick = null;
+		}
+		if (localStorage.getItem("Artsakh") !== null) {
+			document.getElementById("Artsakh").classList.remove("hide");
+			document.getElementById("button_Artsakh").classList.add("hide");
+		}
+	
+		if (ChosenPeople.length !== 0 || ChosenPeopleArmenia !== 0) {
+			document.getElementById("openrestart").classList.remove("hide");
+			document.getElementById("openrestart").classList.add("restart");
+			document.getElementById("openprint").classList.remove("hide");
+			document.getElementById("openprint").classList.add("print");
+		} else {
+			document.getElementById("openrestart").classList.add("hide");
+			document.getElementById("openrestart").classList.remove("restart");
+			document.getElementById("openprint").classList.add("hide");
+			document.getElementById("openprint").classList.remove("print");
+		}
 	}
 }
-function closewindow(winid) {////////////////////////////
+function closewindow(winid) {
 	document.getElementById(winid).classList.add("hide");
 }
-function openrestart(winid) {////////////////////////////
+function openrestart(winid) {
 	document.getElementById(winid).classList.remove("hide");
 }
-function saveDataDiaspora() {////////////////////////////
+function saveDataDiaspora() {
 	DiasporaData[1] = ChosenPeople;
 	DiasporaData[2] = Refusers;
 	let data = JSON.stringify(DiasporaData);
 	fs.writeFileSync('src/data/diaspora.json', data);
-
 }
-function clearstorage() {////////////////////////////
+function saveDataArmenia() {
+	ArmeniaData[1] = ChosenPeopleArmenia;
+	ArmeniaData[2] = RefusersArmenia;
+	let data = JSON.stringify(ArmeniaData);
+	fs.writeFileSync('src/data/armenia.json', data);
+}
+function clearstorage() {
+	ArmeniaData[1] = [];
+	ArmeniaData[2] = [];
 	DiasporaData[1] = [];
 	DiasporaData[2] = [];
 	let data = JSON.stringify(DiasporaData);
+	let Adata = JSON.stringify(ArmeniaData);
+	fs.writeFileSync('src/data/armenia.json', Adata);
 	fs.writeFileSync('src/data/diaspora.json', data);
 	closewindow("confirm_Contenier");
-	localStorage.clear();
+	/*hanel partadir*/localStorage.clear();
 	location.reload();
 }
-function button_Armenia() {
-	localStorage.setItem("Armenia", "fdffg8h4tr8h");
-	check();
-}
+
 function button_Artsakh() {
 	localStorage.setItem("Artsakh", "sdfsfgd14gfg");
 	check();
 }
 /*End Functional*/
 
-function getDifference(a, b) {////////////////////////////
+function getDifference(a, b) {
 	const isSameUser = (a, b) => a.Code === b.Code && a.Gender === b.Gender && a.Education === b.Education && a.AGEGroup === b.AGEGroup && a.CountryFinal === b.CountryFinal;
 	const onlyInLeft = (left, right, compareFunction) =>
 		left.filter(leftValue =>
@@ -392,7 +491,8 @@ function getDifference(a, b) {////////////////////////////
 	return [...onlyInA, ...onlyInB];
 }
 
-function Print(people, idname) {////////////////////////////
+function Print(people, idname) {
+
 	let id = 1;
 	document.getElementById(idname).innerHTML = people
 		.map(
@@ -407,14 +507,37 @@ function Print(people, idname) {////////////////////////////
 						<td>${person.AGEGroup}</td>
 						<td>${person.Education}</td>
 						<td>
-							<button class="butt_changing" onclick="changeConfirm('${id - 1}','${person.Code}', '${person.CountryFinal}', '${person.Gender}', '${person.AGEGroup}', '${person.Education}', '${person.Country}')">Փոխարինել</button>
+							<button class="butt_changing fonts" onclick="changeConfirm('${id - 1}','${person.Code}', '${person.CountryFinal}', '${person.Gender}', '${person.AGEGroup}', '${person.Education}', '${person.Country}')">...</button>
 						</td>
 					</tr >
 	`
 		)
 		.join("");
 }
-function PrintChange(people, idname, id2, code2, country2, gender2, age2, education2, percountry2) {////////////////////////////
+function PrintArmenia(people, idname) {
+	console.log('myid');
+	let id = 1;
+	document.getElementById(idname).innerHTML = people
+		.map(
+			person =>
+				`
+					<tr id="${'arm' + id++}">
+						<td>${id - 1}</td>
+						<td>${person.Code}</td>
+						<td>${person.Country}</td>
+						<td>${person.RegionFinal}</td>
+						<td>${person.Gender}</td>
+						<td>${person.AGEGroup}</td>
+						<td>${person.Education}</td>
+						<td>
+							<button class="butt_changing fonts" onclick="changeConfirmArmenia('${id - 1}','${person.Code}', '${person.Country}', '${person.Gender}', '${person.AGEGroup}', '${person.Education}', '${person.Area}', '${person.RegionFinal}')" size=16><p style='font-size: 16px;'>...</p></button>
+						</td>
+					</tr >
+	`
+		)
+		.join("");
+}
+function PrintChange(people, idname, id2, code2, country2, gender2, age2, education2, percountry2) {
 	let id = 1;
 	document.getElementById(idname).innerHTML = people
 		.map(
@@ -436,19 +559,67 @@ function PrintChange(people, idname, id2, code2, country2, gender2, age2, educat
 		)
 		.join("");
 }
+function PrintChangeArmenia(people, idname, id2, code2, country2, gender2, age2, education2, area2, region2) {
+	let id = 1;
+	document.getElementById(idname).innerHTML = people
+		.map(
+			person =>
+				`
+					<tr id="${'myid' + id++}">
+						<td>${id - 1}</td>
+						<td>${person.Code}</td>
+						<td>${person.Country}</td>
+						<td>${person.Area}</td>
+						<td>${person.Gender}</td>
+						<td>${person.AGEGroup}</td>
+						<td>${person.Education}</td>
+						<td>
+							<button class="butt_changing" onclick="changeArmenia('${id - 1}','${person.Code}', '${person.Country}', '${person.Gender}', '${person.AGEGroup}', '${person.Education}', '${person.Area}', '${id2}', '${code2}', '${country2}', '${gender2}', '${age2}', '${education2}', '${area2}', '${region2}')">Փոխարինել</button>
+						</td>
+					</tr >
+	`
+		)
+		.join("");
+}
+function changeConfirmArmenia(id, code, country, gender, age, education, area, region) {
+	//document.getElementById("confirmbutt").setAttribute("onclick", `change('${id}','${code}', '${country}', '${gender}', '${age}', '${education}')`);
+	document.getElementById("confirm_Contenier").classList.remove("hide");
+	document.getElementById("confirmCode").innerHTML = code + ", " + country + ", " + area + ", " + region + ", " + gender + ", " + age + ", " + education;
 
-function changeConfirm(id, code, country, gender, age, education, percountry, ifpayman) {////////////////////////////
+	let arrayDifference = getDifference(getDifference(Armenia, RefusersArmenia), ChosenPeopleArmenia);
+
+	let changeArr = [];
+	let changeArr1 = [];
+	let changeArr2 = [];
+	let changeArr3 = [];
+	let changeArr4 = [];
+	let changeArr5 = [];
+	let changeArr6 = [];
+	let changeArr7 = [];
+	for (let i = 0; arrayDifference.length > i; i++) {
+		if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender === gender && arrayDifference[i].Education === education && arrayDifference[i].Area === area && arrayDifference[i].RegionFinal === region) {
+			changeArr1.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender === gender && arrayDifference[i].Education === education && arrayDifference[i].Area === area) {
+			changeArr3.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup !== age && arrayDifference[i].Gender === gender && arrayDifference[i].Education === education && arrayDifference[i].Area === area) {
+			changeArr4.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender !== gender && arrayDifference[i].Education === education && arrayDifference[i].Area === area) {
+			changeArr5.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender === gender && arrayDifference[i].Education !== education && arrayDifference[i].Area === area) {
+			changeArr6.push(arrayDifference[i]);
+		} if (arrayDifference[i].AGEGroup === age && arrayDifference[i].Gender === gender && arrayDifference[i].Education === education && arrayDifference[i].Area !== area) {
+			changeArr7.push(arrayDifference[i]);
+		}
+	}
+	changeArr = [...changeArr1, ...changeArr2, ...changeArr3, ...changeArr4, ...changeArr5, ...changeArr6, ...changeArr7];
+	PrintChangeArmenia(changeArr, "changetable", id, code, country, gender, age, education, area, region);
+}
+function changeConfirm(id, code, country, gender, age, education, percountry, ifpayman) {
 	//document.getElementById("confirmbutt").setAttribute("onclick", `change('${id}','${code}', '${country}', '${gender}', '${age}', '${education}')`);
 	document.getElementById("confirm_Contenier").classList.remove("hide");
 	document.getElementById("confirmCode").innerHTML = code + ", " + country + ", " + percountry + ", " + gender + ", " + age + ", " + education;
-	if (country === "Armenia") {
-		/**/let arrayDifference = getDifference(getDifference(Diaspora, Refusers), ChosenPeople);
-	}else if (ifpayman === "Artsakh"){
-		/**/let arrayDifference = getDifference(getDifference(Diaspora, Refusers), ChosenPeople);
-	}else{
-		let arrayDifference = getDifference(getDifference(Diaspora, Refusers), ChosenPeople);
-	}
-	
+
+	let arrayDifference = getDifference(getDifference(Diaspora, Refusers), ChosenPeople);
 
 	let changeArr = [];
 	let changeArr1 = [];
@@ -476,8 +647,35 @@ function changeConfirm(id, code, country, gender, age, education, percountry, if
 	changeArr = [...changeArr1, ...changeArr2, ...changeArr3, ...changeArr4, ...changeArr5, ...changeArr6, ...changeArr7];
 	PrintChange(changeArr, "changetable", id, code, country, gender, age, education, percountry);
 }
-
-function change(id, code, country, gender, age, education, percountry, id2, code2, country2, gender2, age2, education2, percountry2) {////////////////////////////
+function changeArmenia(id, code, country, gender, age, education, area, id2, code2, country2, gender2, age2, education2, area2) {
+	document.getElementById('arm' + id2).innerHTML = `
+		<tr id="${'arm' + id2}">
+			<td>${id2}</td>
+			<td>${code}</td>
+			<td>${country}</td>
+			<td>${area}</td>
+			<td>${gender}</td>
+			<td>${age}</td>
+			<td>${education}</td>
+			<td>
+				<button class="butt_changing" onclick="changeConfirmArmenia('${id2}','${code}', '${country}', '${gender}', '${age}', '${education}', '${area}')">Փոխարինել</button>
+			</td>
+		</tr >
+		`;
+	let refData = {
+		"Code": code,
+		"Gender": gender,
+		"Education": education,
+		"AGEGroup": age,
+		"CountryFinal": area,
+		"CountryFinal": country,
+	};
+	RefusersArmenia.push(refData);
+	saveDataArmenia();
+	closewindow('confirm_Contenier');
+	console.log(RefusersArmenia);
+}
+function change(id, code, country, gender, age, education, percountry, id2, code2, country2, gender2, age2, education2, percountry2) {
 	document.getElementById(id2).innerHTML = `
 		<tr id="${id2}">
 			<td>${id2}</td>
@@ -509,9 +707,18 @@ function deleteperson(array) {
 		DiasporaCopy.splice(array[i], 1);
 	}
 }
+function deletepersonArmenia(array) {
+	for (let i = 0; i < array.length; i++) {
+		ArmeniaCopy.splice(array[i], 1);
+	}
+}
 function pushanddel(index) {
 	ChosenPeople.push(DiasporaCopy[index]);
 	DiasporaCopy.splice(index, 1);
+}
+function pushanddelArmenia(index) {
+	ChosenPeopleArmenia.push(ArmeniaCopy[index]);
+	ArmeniaCopy.splice(index, 1);
 }
 function plus(percode, genderPerson, educationPerson, agePerson, countryPerson, country) {
 	let exarray = [];
@@ -868,6 +1075,96 @@ function plus(percode, genderPerson, educationPerson, agePerson, countryPerson, 
 			exarray.push(i);
 		}
 	};
+	deletepersonArmenia([...new Set(exarray)]);
+
+	getNumbersArmenia();
+}
+function plusArmenia(percode, genderPerson, educationPerson, agePerson, country, area, region) {
+	let exarray = [];
+	let areaarray = [];
+	let edarray = [];
+	let agearray = [];
+	let gearray = [];
+	let regionarray = [];
+	if (area === "Urban") {
+		if (region === "Yerevan") {
+			AYerevan[0]++;
+			if (AYerevan[0] === AYerevan[1]) {
+				regionarray.push("Yerevan");
+			}
+		} else {
+			ARual[0]++;
+			if (ARual[0] === ARual[1]) {
+				areaarray.push("Urban");
+			}
+		}
+	} else if (area === "Rual") {
+		ARual[0]++;
+		if (ARual[0] === ARual[1]) {
+			regionarray.push("Rual");
+		}
+	}
+
+	if (educationPerson === "Secondary or unfinished secondary") {
+		ASecondaryNumber[0]++;
+		if (ASecondaryNumber[0] === ASecondaryNumber[1]) {
+			edarray.push("Secondary or unfinished secondary");
+		}
+	} else if (educationPerson === "Professional or vocational") {
+		AProfessionalNumber[0]++;
+		if (AProfessionalNumber[0] === AProfessionalNumber[1]) {
+			edarray.push("Professional or vocational");
+		}
+	} else if (educationPerson === "University or postgraduate") {
+		AUniversityNumber[0]++;
+		if (AUniversityNumber[0] === AUniversityNumber[1]) {
+			edarray.push("University or postgraduate");
+		}
+	}
+
+	if (agePerson === "18-30") {
+		AAge18_30Number[0]++;
+		if (AAge18_30Number[0] === AAge18_30Number[1]) {
+			agearray.push("18-30");
+		}
+	} else if (agePerson === "31-45") {
+		AAge31_45Number[0]++;
+		if (AAge31_45Number[0] === AAge31_45Number[1]) {
+			agearray.push("31-45");
+		}
+	} else if (agePerson === "46-60") {
+		AAge46_60Number[0]++;
+		if (AAge46_60Number[0] === AAge46_60Number[1]) {
+			agearray.push("46-60");
+		}
+	} else if (agePerson === "61+") {
+		AAge61Number[0]++;
+		if (AAge61Number[0] === AAge61Number[1]) {
+			agearray.push("61+");
+		}
+	}
+
+	if (genderPerson === "Male") {
+		AMale[0]++;
+		var index = ArmeniaCopy.findIndex(item => item.Code === percode);
+		pushanddelArmenia(index);
+		if (AFemale[0] === AFemale[1]) {
+			gearray.push("Female");
+		}
+	} else {
+		AFemale[0]++;
+		var index = ArmeniaCopy.findIndex(item => item.Code === percode);
+		pushanddelArmenia(index);
+		if (AMale[0] === AMale[1]) {
+			gearray.push("Male");
+		}
+	}
+
+	for (let i = 0; i < ArmeniaCopy.length; i++) {
+		if (areaarray.includes(ArmeniaCopy[i].Area) || regionarray.includes(ArmeniaCopy[i].RegionFinal) || edarray.includes(ArmeniaCopy[i].Education) || agearray.includes(ArmeniaCopy[i].AGEGroup) || gearray.includes(ArmeniaCopy[i].Gender)) {
+			exarray.push(i);
+		}
+	};
 	deleteperson([...new Set(exarray)]);
 
 	getNumbers();
@@ -904,7 +1201,8 @@ function getMultipleRandom(allcou, couname, num) {/*petq chi*/
 	}
 	return winer;
 }
-function randomPerson(allcou) {////////////////////////////
+
+function randomPerson(allcou) {
 	let array = [];
 
 	for (let i = 0; allcou.length > i; i++) {
@@ -936,8 +1234,118 @@ function diasporaExport() {
 	xlsx.writeFile(workBook, filename);
 	closewindow('print_Contenier');
 	openrestart('thesave_Contenier');
-};
+}
+function armeniaExport() {
+	function addZero(i) {
+		if (i < 10) { i = "0" + i; }
+		return i;
+	}
+	var date = new Date();
+	let h = addZero(date.getHours());
+	let m = addZero(date.getMinutes());
+	let s = addZero(date.getSeconds());
+	let month = date.getMonth() + 1;
+	month = (month < 10 ? '0' : '') + month;
+	let day = date.getDate();
+	day = (day < 10 ? '0' : '') + day;
+	let filename = process.env.USERPROFILE + "/Downloads/" + "Armenia Results " + date.getFullYear() + '-' + month + '-' + day + " " + h + "_" + m + "_" + s + ".xlsx";
 
+	var workBook = xlsx.utils.book_new();
+	var workShet = xlsx.utils.json_to_sheet(ChosenPeopleArmenia);
+	xlsx.utils.book_append_sheet(workBook, workShet);
+	xlsx.writeFile(workBook, filename);
+	closewindow('print_Contenier');
+	openrestart('thesave_Contenier');
+}
+function button_Armenia() {
+	ArmeniaCopy = JSON.parse(JSON.stringify(Diaspora));
+	ChosenPeopleArmenia = [];
+	while (true) {
+		Armenia = JSON.parse(JSON.stringify(ArmeniaData[0]));
+		ArmeniaCopy = JSON.parse(JSON.stringify(ArmeniaData[0]));
+		ChosenPeopleArmenia = [];
+
+		AUrban = [0, 25, 0, 0];
+		ARual = [0, 32, 0, 0];
+		AYerevan = [0, 33, 0, 0];
+		ASecondaryNumber = [0, 49, 0, 0];
+		AProfessionalNumber = [0, 19, 0, 0];
+		AUniversityNumber = [0, 22, 0, 0];
+		AAge18_30Number = [0, 20, 0, 0];
+		AAge31_45Number = [0, 28, 0, 0];
+		AAge46_60Number = [0, 21, 0, 0];
+		AAge61Number = [0, 21, 0, 0];
+		AFemale = [0, 42, 0, 0];
+		AMale = [0, 48, 0, 0];
+
+		getNumbersArmenia();
+
+		let arr = ArmeniaCopy.map(function (per) {
+			return per.RegionFinal;
+		});
+		let arred = ArmeniaCopy.map(function (per) {
+			return per.Education;
+		});
+
+		let indexes = [];
+		let indexesper = [];
+		if (AYerevan[0] !== AYerevan[1]) {
+			let randomYerevan = getMultipleRandom(arr, "Yerevan", AYerevan[1]);
+			indexes = indexes.concat(randomYerevan);
+		} if (ASecondaryNumber[0] !== ASecondaryNumber[1]) {
+			let randomSe = getMultipleRandom(arred, "Secondary or unfinished secondary", ASecondaryNumber[1]);
+			indexes = indexes.concat(randomSe);
+		}
+
+		for (let i = 0; i < indexes.length; i++) {
+			indexesper.push(JSON.parse(`{"Code": "${ArmeniaCopy[indexes[i]].Code}", "Gender": "${ArmeniaCopy[indexes[i]].Gender}", "Education": "${ArmeniaCopy[indexes[i]].Education}", "AGEGroup": "${ArmeniaCopy[indexes[i]].AGEGroup}", "Country": "${ArmeniaCopy[indexes[i]].Country}", "Area" :"${ArmeniaCopy[indexes[i]].Area}", "RegionFinal" :"${ArmeniaCopy[indexes[i]].RegionFinal}"}`));
+		}
+
+		indexesper.forEach(element => plusArmenia(element.Code, element.Gender, element.Education, element.AGEGroup, element.Country, element.Area, element.RegionFinal));
+
+		while (ChosenPeopleArmenia.length !== 90) {
+			if ((AUrban[0] !== AUrban[1] && AUrban[3] < 0) || (ARual[0] !== ARual[1] && ARual[3] < 0) || (AYerevan[0] !== AYerevan[1] && AYerevan[3] < 0)) {
+				break;
+			}
+			if (ArmeniaCopy.length === 0) {
+				break;
+			}
+			let winPerson = randomPerson(ArmeniaCopy);
+			plusArmenia(winPerson[0].Code, winPerson[0].Gender, winPerson[0].Education, winPerson[0].AGEGroup, winPerson[0].Country, winPerson[0].Area, winPerson[0].RegionFinal);
+
+		}
+
+		if (ChosenPeopleArmenia.length === 90) {
+			while (true) {
+				if (ChosenPeopleArmenia.length === 90) {
+					if (ChosenPeopleArmenia.indexOf(undefined) === -1) {
+						break;
+					} else {
+						getNumberChosenPeopleArmenia();
+						while (ChosenPeopleArmenia.length !== 90) {
+							if ((AUrban[0] !== AUrban[1] && AUrban[3] < 0) || (ARual[0] !== ARual[1] && ARual[3] < 0) || (AYerevan[0] !== AYerevan[1] && AYerevan[3] < 0)) {
+								break;
+							}
+							if (ArmeniaCopy.length === 0) {
+								break;
+							}
+							let winPerson = randomPerson(ArmeniaCopy);
+							plusArmenia(winPerson[0].Code, winPerson[0].Gender, winPerson[0].Education, winPerson[0].AGEGroup, winPerson[0].Country, winPerson[0].Area, winPerson[0].RegionFinal);
+						}
+					}
+				}
+			}
+			if (ChosenPeopleArmenia.length === 90) {
+				break;
+			}
+		}
+
+	}
+
+	PrintArmenia(ChosenPeopleArmenia, "armeniatable");
+	saveDataArmenia();
+	check();
+}
 function button_Diaspora() {
 	DiasporaCopy = JSON.parse(JSON.stringify(Diaspora));
 	ChosenPeople = [];
@@ -1165,17 +1573,22 @@ function button_Diaspora() {
 	check();
 
 }
-closewindow('restart_Contenier');////////////////////////////
-closewindow('none_Contenier');////////////////////////////
-closewindow('confirm_Contenier');////////////////////////////
-closewindow('print_Contenier');////////////////////////////
-closewindow('thesave_Contenier');////////////////////////////
+closewindow('restart_Contenier');
+closewindow('none_Contenier');
+closewindow('confirm_Contenier');
+closewindow('print_Contenier');
+closewindow('thesave_Contenier');
 check();
 
 if (ChosenPeople.length === 0) {
 	getNumbers();
 } else {
 	Print(ChosenPeople, "diasporatable");
+}
+if (ChosenPeopleArmenia.length === 0) {
+	getNumbersArmenia();
+} else {
+	PrintArmenia(ChosenPeopleArmenia, "armeniatable");
 }
 
 

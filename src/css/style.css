@@ -4,6 +4,16 @@
 	box-sizing: border-box;
 }
 
+@font-face {
+	font-family: Montserrat;
+	src: url(..//font/Montserratarm-Regular.otf);
+}
+
+@font-face {
+	font-family: Montserratbold;
+	src: url(..//font/Montserratarm-Bold.otf);
+}
+
 .styled-table {
 	border-collapse: collapse;
 	margin: 25px 0;
@@ -64,8 +74,9 @@
 
 .table_title {
 	text-align: center;
-	color: #009879;
-	font-family: Arial, Helvetica, sans-serif;
+	color: #00605F;
+	font-family: Montserratbold;
+	text-transform: uppercase;
 }
 
 .random {
@@ -77,13 +88,16 @@
 .button_Diaspora,
 .button_Armenia,
 .button_Artsakh {
-	width: 130px;
-	height: 33px;
-	background-color: #A1BD32;
+	text-transform: uppercase;
+	width: 190px;
+	height: 45px;
+	background: #00605F;
 	color: white;
-	font-size: 20px;
+	font-family: Montserrat;
+	font-size: 15px;
+	line-height: 16px;
 	border: none;
-	border-radius: 6px;
+	border-radius: 5px;
 	margin: 33px 10px;
 }
 
@@ -92,7 +106,7 @@
 .none_Contenier,
 .print_Contenier,
 .thesave_Contenier {
-
+	top: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -236,4 +250,102 @@
 
 ::-webkit-scrollbar-thumb:hover {
 	background-color: #a8bbbf;
+}
+
+.elementleft,
+.elementright {
+	position: absolute;
+	bottom: 0;
+}
+
+.elementright {
+	right: 0;
+}
+
+.elementleft {
+
+	left: 0;
+}
+
+.fleximg {
+	margin-top: 78px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.fut {
+	width: 358PX;
+}
+
+
+
+.starttext,
+.starttext2 {
+	margin-top: 32px;
+	width: 625px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 17px;
+
+	color: black;
+}
+
+.button_DiasporaStart,
+.button_ArmeniaStart,
+.button_ArtsakhStart {
+	width: 203px;
+	height: 122px;
+	border-radius: 5px;
+	border: none;
+	background: #00605F;
+	font-family: Montserratbold;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 20px;
+	text-transform: uppercase;
+	color: white;
+}
+
+.butdiv {
+	margin-top: 20px;
+
+}
+
+.button_ArtsakhStart {
+	margin: 0 12px;
+}
+
+.starttext {
+	text-align: center;
+}
+
+.starttex2 {
+	width: 625px;
+}
+
+.armathshine {
+	height: 70px;
+}
+
+.conimg {
+	width: 282.56px;
+}
+
+.centredv {
+	margin-top: 60px;
+	display: flex;
+	justify-content: center;
+}
+
+.fonts {
+	font-size: 23px;
+	background-color: #d0f4e8;
+	color: #3fa785;
+}
+.act{
+	background-color: #b3d0cf;
 }
