@@ -1673,6 +1673,7 @@ function button_Armenia() {
 			indexesper.push(JSON.parse(`{"Code": "${ArmeniaCopy[indexes[i]].Code}", "Gender": "${ArmeniaCopy[indexes[i]].Gender}", "Education": "${ArmeniaCopy[indexes[i]].Education}", "AGEGroup": "${ArmeniaCopy[indexes[i]].AGEGroup}", "Country": "${ArmeniaCopy[indexes[i]].Country}", "Area" :"${ArmeniaCopy[indexes[i]].Area}", "RegionFinal" :"${ArmeniaCopy[indexes[i]].RegionFinal}"}`));
 		}
 		indexesper.forEach(element => plusArmenia(element.Code, element.Gender, element.Education, element.AGEGroup, element.Country, element.Area, element.RegionFinal)); */
+		
 		while (true) {
 			if (ASecondaryNumber[0] !== ASecondaryNumber[1]) {
 				let arred = ArmeniaCopy.map(function (per) {
@@ -1685,12 +1686,12 @@ function button_Armenia() {
 						"Gender": ArmeniaCopy[randomSe[0]].Gender,
 						"Education": ArmeniaCopy[randomSe[0]].Education,
 						"AGEGroup": ArmeniaCopy[randomSe[0]].AGEGroup,
-						"Areaggggg": ArmeniaCopy[randomSe[0]].Area,
+						"Area": ArmeniaCopy[randomSe[0]].Area,
 						"Country": ArmeniaCopy[randomSe[0]].Country,
 						"RegionFinal": ArmeniaCopy[randomSe[0]].RegionFinal
 					}
 				];
-				plusArmenia(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Areaggggg, gsygdsgd[0].RegionFinal);
+				plusArmenia(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Area, gsygdsgd[0].RegionFinal);
 
 			} else {
 				break;
@@ -1708,12 +1709,12 @@ function button_Armenia() {
 						"Gender": ArmeniaCopy[randomSe[0]].Gender,
 						"Education": ArmeniaCopy[randomSe[0]].Education,
 						"AGEGroup": ArmeniaCopy[randomSe[0]].AGEGroup,
-						"Areaggggg": ArmeniaCopy[randomSe[0]].Area,
+						"Area": ArmeniaCopy[randomSe[0]].Area,
 						"Country": ArmeniaCopy[randomSe[0]].Country,
 						"RegionFinal": ArmeniaCopy[randomSe[0]].RegionFinal
 					}
 				];
-				plusArmenia(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Areaggggg, gsygdsgd[0].RegionFinal);
+				plusArmenia(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Area, gsygdsgd[0].RegionFinal);
 			} else {
 				break;
 			}
@@ -1730,46 +1731,23 @@ function button_Armenia() {
 						"Gender": ArmeniaCopy[randomSe[0]].Gender,
 						"Education": ArmeniaCopy[randomSe[0]].Education,
 						"AGEGroup": ArmeniaCopy[randomSe[0]].AGEGroup,
-						"Areaggggg": ArmeniaCopy[randomSe[0]].Area,
+						"Area": ArmeniaCopy[randomSe[0]].Area,
 						"Country": ArmeniaCopy[randomSe[0]].Country,
 						"RegionFinal": ArmeniaCopy[randomSe[0]].RegionFinal
 					}
 				];
-				plusArmenia(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Areaggggg, gsygdsgd[0].RegionFinal);
+				plusArmenia(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Area, gsygdsgd[0].RegionFinal);
 			} else {
 				break;
 			}
 		}
 
+
 		while (ChosenPeopleArmenia.length !== 90) {
 			if ((AUrban[0] !== AUrban[1] && AUrban[3] < 0) || (ARual[0] !== ARual[1] && ARual[3] < 0) || (AYerevan[0] !== AYerevan[1] && AYerevan[3] < 0)) {
-				console.log(AUrban);
-				console.log(ARual);
-				console.log(AYerevan);
-				console.log(ASecondaryNumber);
-				console.log(AProfessionalNumber);
-				console.log(AUniversityNumber);
-				console.log(AAge18_30Number);
-				console.log(AAge31_45Number);
-				console.log(AAge46_60Number);
-				console.log(AAge61Number);
-				console.log(AFemale);
-				console.log(AMale);
 				break;
 			}
 			if (ArmeniaCopy.length === 0) {
-				console.log(AUrban);
-				console.log(ARual);
-				console.log(AYerevan);
-				console.log(ASecondaryNumber);
-				console.log(AProfessionalNumber);
-				console.log(AUniversityNumber);
-				console.log(AAge18_30Number);
-				console.log(AAge31_45Number);
-				console.log(AAge46_60Number);
-				console.log(AAge61Number);
-				console.log(AFemale);
-				console.log(AMale);
 				break;
 			}
 			let winPerson = randomPerson(ArmeniaCopy);

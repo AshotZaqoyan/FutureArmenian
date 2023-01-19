@@ -201,15 +201,6 @@
 		{
 			"Country": "Armenia",
 			"Gender": "Male",
-			"Education": "Professional or vocational",
-			"Area": "Urban",
-			"Code": "OZF9",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Tavush"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Urban",
 			"Code": "ZPU7",
@@ -377,15 +368,6 @@
 			"Code": "IJA5",
 			"AGEGroup": "31-45",
 			"RegionFinal": "Lori"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Professional or vocational",
-			"Area": "Urban",
-			"Code": "NQJ3",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Armavir"
 		},
 		{
 			"Country": "Armenia",
@@ -620,15 +602,6 @@
 			"Code": "SVG9",
 			"AGEGroup": "18-30",
 			"RegionFinal": "Armavir"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Rural",
-			"Code": "EHL6",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Kotayk"
 		},
 		{
 			"Country": "Armenia",
@@ -876,24 +849,6 @@
 		{
 			"Country": "Armenia",
 			"Gender": "Male",
-			"Education": "Professional or vocational",
-			"Area": "Urban",
-			"Code": "IWB0",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Armavir"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Professional or vocational",
-			"Area": "Urban",
-			"Code": "UZX3",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Armavir"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Rural",
 			"Code": "MXW0",
@@ -1046,15 +1001,6 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "University or postgraduate",
-			"Area": "Urban",
-			"Code": "XUB7",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Lori"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Rural",
@@ -1100,15 +1046,6 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Professional or vocational",
-			"Area": "Rural",
-			"Code": "BET2",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Shirak"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Urban",
@@ -1133,15 +1070,6 @@
 			"Code": "NLZ8",
 			"AGEGroup": "31-45",
 			"RegionFinal": "Lori"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Professional or vocational",
-			"Area": "Rural",
-			"Code": "XIA8",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Armavir"
 		},
 		{
 			"Country": "Armenia",
@@ -2105,15 +2033,6 @@
 			"Code": "POX8",
 			"AGEGroup": "18-30",
 			"RegionFinal": "Gegharkunik"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Professional or vocational",
-			"Area": "Rural",
-			"Code": "DBP9",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Lori"
 		},
 		{
 			"Country": "Armenia",
@@ -3981,15 +3900,6 @@
 		{
 			"Country": "Armenia",
 			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Rural",
-			"Code": "ZEW1",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Lori"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Rural",
 			"Code": "NWM0",
@@ -4283,15 +4193,6 @@
 			"Code": "EJJ5",
 			"AGEGroup": "18-30",
 			"RegionFinal": "Shirak"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "NUV8",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Syunik"
 		},
 		{
 			"Country": "Armenia",
@@ -5493,24 +5394,6 @@
 		{
 			"Country": "Armenia",
 			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "QIV5",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Tavush"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "PCY5",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Tavush"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
 			"Education": "Professional or vocational",
 			"Area": "Urban",
 			"Code": "HXY9",
@@ -5524,24 +5407,6 @@
 			"Area": "Urban",
 			"Code": "QDC3",
 			"AGEGroup": "31-45",
-			"RegionFinal": "Tavush"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "GUC6",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Tavush"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "CCP6",
-			"AGEGroup": "0-18",
 			"RegionFinal": "Tavush"
 		},
 		{
@@ -9678,15 +9543,6 @@
 		{
 			"Country": "Armenia",
 			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "UZS4",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Armavir"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
 			"Education": "University or postgraduate",
 			"Area": "Urban",
 			"Code": "AXB2",
@@ -10172,15 +10028,6 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "PUC4",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Syunik"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Urban",
@@ -10488,15 +10335,6 @@
 		{
 			"Country": "Armenia",
 			"Gender": "Male",
-			"Education": "Professional or vocational",
-			"Area": "Urban",
-			"Code": "BDJ0",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Gegharkunik"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Rural",
 			"Code": "EEF2",
@@ -10727,15 +10565,6 @@
 			"Code": "HAH9",
 			"AGEGroup": "46-60",
 			"RegionFinal": "Kotayk"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "DNQ8",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Lori"
 		},
 		{
 			"Country": "Armenia",
@@ -11333,15 +11162,6 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "University or postgraduate",
-			"Area": "Urban",
-			"Code": "XJJ0",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Kotayk"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Male",
 			"Education": "Professional or vocational",
 			"Area": "Rural",
@@ -11397,29 +11217,11 @@
 		{
 			"Country": "Armenia",
 			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Rural",
-			"Code": "SYG8",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Tavush"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
 			"Education": "University or postgraduate",
 			"Area": "Urban",
 			"Code": "NVY6",
 			"AGEGroup": "31-45",
 			"RegionFinal": "Ararat"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Rural",
-			"Code": "FOE5",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Tavush"
 		},
 		{
 			"Country": "Armenia",
@@ -11537,15 +11339,6 @@
 			"Code": "JRW8",
 			"AGEGroup": "18-30",
 			"RegionFinal": "Ararat"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "UGD7",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Lori"
 		},
 		{
 			"Country": "Armenia",
@@ -12108,15 +11901,6 @@
 		{
 			"Country": "Armenia",
 			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Rural",
-			"Code": "WUE4",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Lori"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Rural",
 			"Code": "YDQ5",
@@ -12158,15 +11942,6 @@
 			"Code": "GRF7",
 			"AGEGroup": "31-45",
 			"RegionFinal": "Ararat"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "UQH3",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Gegharkunik"
 		},
 		{
 			"Country": "Armenia",
@@ -13097,15 +12872,6 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Professional or vocational",
-			"Area": "Urban",
-			"Code": "PSA0",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Kotayk"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Female",
 			"Education": "University or postgraduate",
 			"Area": "Rural",
@@ -13277,15 +13043,6 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Urban",
-			"Code": "IDP9",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Gegharkunik"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Rural",
@@ -13300,15 +13057,6 @@
 			"Area": "Rural",
 			"Code": "AKD3",
 			"AGEGroup": "31-45",
-			"RegionFinal": "Gegharkunik"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Professional or vocational",
-			"Area": "Urban",
-			"Code": "NTW8",
-			"AGEGroup": "0-18",
 			"RegionFinal": "Gegharkunik"
 		},
 		{
@@ -13601,29 +13349,11 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Yerevan",
-			"Code": "LKZ2",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Male",
 			"Education": "University or postgraduate",
 			"Area": "Yerevan",
 			"Code": "GKV4",
 			"AGEGroup": "31-45",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Yerevan",
-			"Code": "IPZ7",
-			"AGEGroup": "0-18",
 			"RegionFinal": "Yerevan"
 		},
 		{
@@ -17480,15 +17210,6 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Yerevan",
-			"Code": "RPT5",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Female",
 			"Education": "University or postgraduate",
 			"Area": "Yerevan",
@@ -18511,15 +18232,6 @@
 			"Area": "Yerevan",
 			"Code": "CKT6",
 			"AGEGroup": "31-45",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Professional or vocational",
-			"Area": "Yerevan",
-			"Code": "FHH7",
-			"AGEGroup": "0-18",
 			"RegionFinal": "Yerevan"
 		},
 		{
@@ -19659,15 +19371,6 @@
 		{
 			"Country": "Armenia",
 			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Yerevan",
-			"Code": "HTZ1",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
 			"Education": "University or postgraduate",
 			"Area": "Yerevan",
 			"Code": "NVB6",
@@ -20144,15 +19847,6 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "University or postgraduate",
-			"Area": "Yerevan",
-			"Code": "BMQ1",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Female",
 			"Education": "University or postgraduate",
 			"Area": "Yerevan",
@@ -20347,15 +20041,6 @@
 			"Area": "Yerevan",
 			"Code": "HLH0",
 			"AGEGroup": "31-45",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "University or postgraduate",
-			"Area": "Yerevan",
-			"Code": "UUG5",
-			"AGEGroup": "0-18",
 			"RegionFinal": "Yerevan"
 		},
 		{
@@ -21157,15 +20842,6 @@
 			"Area": "Yerevan",
 			"Code": "MPH7",
 			"AGEGroup": "31-45",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Female",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Yerevan",
-			"Code": "ZQR5",
-			"AGEGroup": "0-18",
 			"RegionFinal": "Yerevan"
 		},
 		{
@@ -22736,15 +22412,6 @@
 		},
 		{
 			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Yerevan",
-			"Code": "UCB6",
-			"AGEGroup": "0-18",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
 			"Gender": "Female",
 			"Education": "University or postgraduate",
 			"Area": "Yerevan",
@@ -22858,15 +22525,6 @@
 			"Area": "Yerevan",
 			"Code": "SJU2",
 			"AGEGroup": "31-45",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Yerevan",
-			"Code": "PIF4",
-			"AGEGroup": "0-18",
 			"RegionFinal": "Yerevan"
 		},
 		{
@@ -23704,15 +23362,6 @@
 			"Area": "Yerevan",
 			"Code": "XFF9",
 			"AGEGroup": "31-45",
-			"RegionFinal": "Yerevan"
-		},
-		{
-			"Country": "Armenia",
-			"Gender": "Male",
-			"Education": "Secondary or unfinished secondary",
-			"Area": "Yerevan",
-			"Code": "YQY5",
-			"AGEGroup": "0-18",
 			"RegionFinal": "Yerevan"
 		},
 		{
