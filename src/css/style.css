@@ -118,7 +118,6 @@
 
 .restart,
 .print {
-	position: absolute;
 	height: 33px;
 	border-radius: 5px;
 	border: none;
@@ -126,15 +125,14 @@
 }
 
 .restart {
-	top: 10px;
 	width: 90px;
 	right: 10px;
 	color: #CE090A;
 	background-color: #FFD5D8;
+	margin-left: 15px;
 }
 
 .print {
-	top: 8px;
 	width: 110px;
 	left: 10px;
 	color: #3fa785;
@@ -169,11 +167,12 @@
 
 .b_restart {
 	font-size: 20px;
-	background-color: rgb(46, 129, 236);
+	background: #00605F;
+	font-family: Montserrat;
 	border: none;
-	border-radius: 7px;
+	border-radius: 5px;
 	color: white;
-	width: 130px;
+	width: 140px;
 	height: 35px;
 	margin: 20px 0;
 }
@@ -198,9 +197,7 @@
 	margin-bottom: 8px;
 }
 
-.hide {
-	display: none;
-}
+
 
 .forprint {
 	margin: 0;
@@ -268,7 +265,7 @@
 }
 
 .fleximg {
-	margin-top: 78px;
+	margin-top: 42px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -336,7 +333,7 @@
 }
 
 .centredv {
-	margin-top: 60px;
+	margin-top: 30px;
 	display: flex;
 	justify-content: center;
 }
@@ -346,6 +343,56 @@
 	background-color: #d0f4e8;
 	color: #3fa785;
 }
-.act{
+
+.act {
 	background-color: #b3d0cf;
+}
+
+.settings {
+	display: flex;
+	top: 0;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #40756b25;
+	display: flex;
+}
+.window_setting {
+	width: 85%;
+	max-width: 1000px;
+	height: 95%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: white;
+	box-shadow: 0px 0px 9px 4px rgb(0 0 0 / 13%);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	border-radius: 8px;
+}
+
+.textjson {
+	width: 88%;
+	height: 80%;
+	padding: 12px 20px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: #f8f8f8;
+	font-size: 16px;
+	font-family: sans-serif;
+}
+.sett_con{
+	display: flex;
+	justify-content: right;
+}
+.sett_img{
+	width: 30px;
+	margin-right: 5px;
+	margin-top: 5px;
+}
+.hide {
+	display: none;
 }

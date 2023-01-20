@@ -11,6 +11,20 @@
 
 <body>
 	<div class="startdiv" id="startdiv">
+		<div class="sett_con"><img src="img/setting.svg" alt="Կարգավորումներ" class="sett_img" onclick="openStartSett()"></div>
+		<div class="settings hide" id="start_all_settings">
+			<div class="window_setting">
+				<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('start_all_settings')">
+				<br>
+				<textarea id="uploadjson" placeholder="Մուտքագրել JSON ֆայլը" class="textjson"></textarea>
+				<br>
+				<div>
+					<button class="button_Diaspora forprint " onclick="uploadDia()">Սփյուռք</button>
+					<button class="button_Armenia forprint " onclick="uploadArm()">Հայաստան</button>
+					<button class="button_Artsakh forprint " onclick="uploadArt()">Արցախ</button>
+				</div>
+			</div>
+		</div>
 		<div class="fleximg">
 			<img src="img/fut.svg" class="fut">
 			<p class="starttext">Համակարգչային ծրագիրը իրականացնում է առաջին համահայկական քաղաքացիական Համաժողովի
@@ -51,45 +65,47 @@
 		</div>
 	</div>
 	<div class="hide" id="continuing">
-
-		<button class="hide" id="openprint" onclick="openrestart('print_Contenier')">Արտահանել</button>
-		<button class="hide" id="openrestart" onclick="openrestart('restart_Contenier')">Վերսկսել</button>
+		<div class="sett_con"><img src="img/setting.svg" alt="Կարգավորումներ" class="sett_img" onclick="opensett()"></div>
+		<div class="settings hide" id="all_settings">
+			<div class="window_setting">
+				<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('all_settings')">
+				<div>
+					<button class="hide" id="openprint" onclick="openrestart('print_Contenier')">Արտահանել</button>
+					<button class="hide" id="openrestart" onclick="openrestart('restart_Contenier')">Վերսկսել</button>
+				</div>
+				<br>
+				<textarea id="uploadjson" placeholder="Մուտքագրել JSON ֆայլը" class="textjson"></textarea>
+				<br>
+				<div> 
+					<button class="button_Diaspora forprint " onclick="uploadDia()">Սփյուռք</button>
+					<button class="button_Armenia forprint " onclick="uploadArm()">Հայաստան</button>
+					<button class="button_Artsakh forprint " onclick="uploadArt()">Արցախ</button>
+				</div>
+			</div>
+		</div>
 		<div class="thesave_Contenier hide" id="thesave_Contenier">
 			<div class="window_none">
 				<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('thesave_Contenier')">
-				<p class="none_p">Այն պահպանվել է<br>Download թվղապանակում</p>
+				<p class="none_p">Այն պահպանվել է<br>Download թղթապանակում</p>
 			</div>
 		</div>
 		<div class="none_Contenier hide" id="none_Contenier">
 			<div class="window_none">
 				<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('none_Contenier')">
-				<p class="none_p">Նմանատիպ տվյալներով<br>այլ անձ չի գտնվել </p>
+				<p class="none_p">Նմանատիպ տվյալներով<br>այլ անձ չի գտնվել</p>
 			</div>
 		</div>
 		<div class="print_Contenier hide" id="print_Contenier">
 			<div class="window_restart ss-container">
 				<img src="img/close.svg" alt="Իքս" class="close_window" onclick="closewindow('print_Contenier')">
-				<p class="restart_p">Սեղմելով կոճակներից որևէ մեկի վրա <br> դուք արտահանելու եք ընտրված անձանց<br><br>
+				<p class="restart_p">Սեղմելով կոճակներից որևէ մեկի վրա <br> դուք արտահանելու եք ընտրված մարդկանց
+					ցանկը<br><br>
 				<div class="printbutdiv">
 					<button class="button_Diaspora forprint hide" id="diaex" onclick="diasporaExport()">Սփյուռք</button>
 					<button class="button_Armenia forprint hide" id="armex" onclick="armeniaExport()">Հայաստան</button>
 					<button class="button_Artsakh forprint hide" id="artex" onclick="button_Artsakh()">Արցախ</button>
 				</div>
 
-			</div>
-		</div>
-		<div class="confirm_Contenier hide" id="confirm_Contenier">
-			<div class="window_restart changetable">
-				<img src="img/close.svg" alt="Իքս" class="close_window closechange"
-					onclick="closewindow('confirm_Contenier')">
-				<p class="restart_p">Սեղմելով կոճակներից որևէ մեկի վրա դուք փոխելու եք <br><b id="confirmCode"></b>
-					<br>տվյալներով անձին բայց նաև կարող եքդադարեցնել այս գործընթացը <br> սեղմելով <img
-						src="img/close.svg" alt="Իքս" width="13px"> կոճակի վրա
-				</p>
-				<table class="styled-table tableforchange">
-					<tbody id="changetable">
-					</tbody>
-				</table>
 			</div>
 		</div>
 		<div class="restart_Contenier hide" id="restart_Contenier">
@@ -102,9 +118,24 @@
 				<button class="b_restart" onclick="clearstorage()">Հաստատել</button>
 			</div>
 		</div>
+		<div class="confirm_Contenier hide" id="confirm_Contenier">
+			<div class="window_restart changetable">
+				<img src="img/close.svg" alt="Իքս" class="close_window closechange"
+					onclick="closewindow('confirm_Contenier')">
+				<p class="restart_p">Սեղմելով կոճակներից որևէ մեկի վրա դուք փոխելու եք <br><b id="confirmCode"></b>
+					<br>տվյալներով անձին բայց նաև կարող եք դադարեցնել այս գործընթացը <br> սեղմելով <img
+						src="img/close.svg" alt="Իքս" width="13px"> կոճակի վրա
+				</p>
+				<table class="styled-table tableforchange">
+					<tbody id="changetable">
+					</tbody>
+				</table>
+			</div>
+		</div>
 		<div class="centredv"><img src="img/fut.svg" class="conimg"></div>
 		<div class="random">
-			<button class="button_Armenia" id="button_Armenia" onclick="button_Armenia()">Հայաստանի Հանրապետություն</button>
+			<button class="button_Armenia" id="button_Armenia" onclick="button_Armenia()">Հայաստանի
+				Հանրապետություն</button>
 			<button class="button_Artsakh" id="button_Artsakh" onclick="button_Artsakh()">Արցախ</button>
 			<button class="button_Diaspora" id="button_Diaspora" onclick="button_Diaspora()">Սփյուռք</button>
 

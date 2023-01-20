@@ -208,7 +208,7 @@ function getNumberChosenPeopleArmenia() {
 	for (let i = 0; ChosenPeopleArmenia.length > i; i++) {
 		if (ChosenPeopleArmenia[i].Area === "Urban") {
 			AUrban[0]++;
-		} else if (ChosenPeopleArmenia[i].Area === "Rual") {
+		} else if (ChosenPeopleArmenia[i].Area === "Rural") {
 			ARual[0]++;
 		} else if (ChosenPeopleArmenia[i].Area === "Yerevan") {
 			AYerevan[0]++;
@@ -253,9 +253,9 @@ function getNumberChosenPeopleArtsakh() {
 
 	for (let i = 0; ChosenPeopleArtsakh.length > i; i++) {
 		if (ChosenPeopleArtsakh[i].Area === "Urban") {
-			AUrban[0]++;
-		} else if (ChosenPeopleArtsakh[i].Area === "Rual") {
-			ARual[0]++;
+			ArtUrban[0]++;
+		} else if (ChosenPeopleArtsakh[i].Area === "Rural") {
+			ArtRual[0]++;
 		}
 
 		if (ChosenPeopleArtsakh[i].Education === "Secondary or unfinished secondary") {
@@ -420,7 +420,6 @@ function getNumbersArmenia() {
 			AUrban[2]++;
 			AUrban[3] = AUrban[2] - AUrban[1] + AUrban[0];
 		} else if (ArmeniaCopy[i].Area === "Rual") {
-
 			ARual[2]++;
 			ARual[3] = ARual[2] - ARual[1] + ARual[0];
 		} else if (ArmeniaCopy[i].Area === "Yerevan") {
@@ -469,7 +468,6 @@ function getNumbersArmenia() {
 function getNumbersArtsakh() {
 	ArtUrban[2] = 0;
 	ArtRual[2] = 0;
-
 	ArtSecondaryNumber[2] = 0;
 	ArtProfessionalNumber[2] = 0;
 	ArtUniversityNumber[2] = 0;
@@ -484,7 +482,7 @@ function getNumbersArtsakh() {
 		if (ArtsakhCopy[i].Area === "Urban") {
 			ArtUrban[2]++;
 			ArtUrban[3] = ArtUrban[2] - ArtUrban[1] + ArtUrban[0];
-		} else if (ArtsakhCopy[i].Area === "Rual") {
+		} else if (ArtsakhCopy[i].Area === "Rural") {
 			ArtRual[2]++;
 			ArtRual[3] = ArtRual[2] - ArtRual[1] + ArtRual[0];
 		}
@@ -563,6 +561,12 @@ function closewindow(winid) {
 function openrestart(winid) {
 	document.getElementById(winid).classList.remove("hide");
 }
+function opensett(){
+	document.getElementById("all_settings").classList.remove("hide");
+}
+function openStartSett(){
+	document.getElementById("start_all_settings").classList.remove("hide");
+}
 function saveDataDiaspora() {
 	DiasporaData[1] = ChosenPeople;
 	DiasporaData[2] = Refusers;
@@ -581,6 +585,31 @@ function saveDataArtsakh() {
 	let data = JSON.stringify(ArtsakhData);
 	fs.writeFileSync('src/data/artsakh.json', data);
 }
+function uploadDia() {
+	let textjson = document.getElementById("uploadjson").value;
+	DiasporaData[0] = textjson;
+	DiasporaData[1] = ChosenPeople;
+	DiasporaData[2] = Refusers;
+	let data = JSON.stringify(DiasporaData);
+	fs.writeFileSync('src/data/diaspora.json', data);
+}
+function uploadArm() {
+	let textjson = document.getElementById("uploadjson").value;
+	ArmeniaData[0] = textjson;
+	ArmeniaData[1] = ChosenPeopleArmenia;
+	ArmeniaData[2] = RefusersArmenia;
+	let data = JSON.stringify(ArmeniaData);
+	fs.writeFileSync('src/data/armenia.json', data);
+}
+function uploadArt() {
+	let textjson = document.getElementById("uploadjson").value;
+	ArtsakhData[0] = textjson;
+	ArtsakhData[1] = ChosenPeopleArtsakh;
+	ArtsakhData[2] = RefusersArtsakh;
+	let data = JSON.stringify(ArtsakhData);
+	fs.writeFileSync('src/data/artsakh.json', data);
+}
+
 function clearstorage() {
 	ArmeniaData[1] = [];
 	ArmeniaData[2] = [];
@@ -840,6 +869,7 @@ function changeArmenia(id, code, country, gender, age, education, area, regeon, 
 			<td>${id2}</td>
 			<td>${code}</td>
 			<td>${country}</td>
+			<td>${area}</td>
 			<td>${gender}</td>
 			<td>${age}</td>
 			<td>${education}</td>
@@ -849,17 +879,28 @@ function changeArmenia(id, code, country, gender, age, education, area, regeon, 
 		</tr >
 		`;
 	let refData = {
-		"Code": code,
-		"Gender": gender,
-		"Education": education,
-		"AGEGroup": age,
-		"Area": area,
-		"Country": country,
-		"RegionFinal": regeon
+		"Code": code2,
+		"Gender": gender2,
+		"Education": education2,
+		"AGEGroup": age2,
+		"Area": area2,
+		"Country": country2,
+		"RegionFinal": region2
 	};
+
+	let indexRefPerson = ChosenPeopleArmenia.findIndex(personData => personData.Code === code2);
+
+	ChosenPeopleArmenia[indexRefPerson].Code = code;
+	ChosenPeopleArmenia[indexRefPerson].Gender = gender;
+	ChosenPeopleArmenia[indexRefPerson].Education = education;
+	ChosenPeopleArmenia[indexRefPerson].AGEGroup = age;
+	ChosenPeopleArmenia[indexRefPerson].Area = area;
+	ChosenPeopleArmenia[indexRefPerson].Country = country;
+	ChosenPeopleArmenia[indexRefPerson].RegionFinal = regeon;
+
 	RefusersArmenia.push(refData);
-	saveDataArmenia();
 	closewindow('confirm_Contenier');
+	saveDataArmenia();
 }
 function changeArtsakh(id, code, country, gender, age, education, area, id2, code2, country2, gender2, age2, education2, area2) {
 	document.getElementById('arm' + id2).innerHTML = `
@@ -872,18 +913,28 @@ function changeArtsakh(id, code, country, gender, age, education, area, id2, cod
 			<td>${age}</td>
 			<td>${education}</td>
 			<td>
-				<button class="butt_changing fonts" onclick="changeConfirmArmenia('${id2}','${code}', '${country}', '${gender}', '${age}', '${education}', '${area}')">...</button>
+				<button class="butt_changing fonts" onclick="changeConfirmArtsakh('${id2}','${code}', '${country}', '${gender}', '${age}', '${education}', '${area}')">...</button>
 			</td>
 		</tr >
 		`;
 	let refData = {
-		"Code": code,
-		"Gender": gender,
-		"Education": education,
-		"AGEGroup": age,
-		"Area": area,
-		"Country": country
+		"Code": code2,
+		"Gender": gender2,
+		"Education": education2,
+		"AGEGroup": age2,
+		"Area": area2,
+		"Country": country2
 	};
+
+	let indexRefPerson = ChosenPeopleArtsakh.findIndex(personData => personData.Code === code2);
+
+	ChosenPeopleArtsakh[indexRefPerson].Code = code;
+	ChosenPeopleArtsakh[indexRefPerson].Gender = gender;
+	ChosenPeopleArtsakh[indexRefPerson].Education = education;
+	ChosenPeopleArtsakh[indexRefPerson].AGEGroup = age;
+	ChosenPeopleArtsakh[indexRefPerson].Area = area;
+	ChosenPeopleArtsakh[indexRefPerson].Country = country;
+
 	RefusersArtsakh.push(refData);
 	saveDataArtsakh();
 	closewindow('confirm_Contenier');
@@ -905,13 +956,22 @@ function change(id, code, country, gender, age, education, percountry, id2, code
 		`;
 
 	let refData = {
-		"Code": code,
-		"Gender": gender,
-		"Education": education,
-		"AGEGroup": age,
-		"CountryFinal": country,
-		"Country": percountry
+		"Code": code2,
+		"Gender": gender2,
+		"Education": education2,
+		"AGEGroup": age2,
+		"CountryFinal": country2,
+		"Country": percountry2
 	};
+	let indexRefPerson = ChosenPeople.findIndex(personData => personData.Code === code2);
+
+	ChosenPeople[indexRefPerson].Code = code;
+	ChosenPeople[indexRefPerson].Gender = gender;
+	ChosenPeople[indexRefPerson].Education = education;
+	ChosenPeople[indexRefPerson].AGEGroup = age;
+	ChosenPeople[indexRefPerson].Country = percountry;
+	ChosenPeople[indexRefPerson].CountryFinal = country;
+
 	Refusers.push(refData);
 	saveDataDiaspora();
 	closewindow('confirm_Contenier');
@@ -1451,13 +1511,13 @@ function plusArtsakh(percode, genderPerson, educationPerson, agePerson, area) {
 
 	if (area === "Urban") {
 		ArtUrban[0]++;
-		if (ARual[0] === ARual[1]) {
+		if (ArtUrban[0] === ArtUrban[1]) {
 			areaarray.push("Urban");
 		}
-	} else if (area === "Rual") {
+	} else if (area === "Rural") {
 		ArtRual[0]++;
-		if (ARual[0] === ARual[1]) {
-			regionarray.push("Rual");
+		if (ArtRual[0] === ArtRual[1]) {
+			areaarray.push("Rural");
 		}
 	}
 
@@ -1517,11 +1577,11 @@ function plusArtsakh(percode, genderPerson, educationPerson, agePerson, area) {
 	}
 
 	for (let i = 0; i < ArtsakhCopy.length; i++) {
-		if (areaarray.includes(ArmeniaCopy[i].Area) || edarray.includes(ArmeniaCopy[i].Education) || agearray.includes(ArmeniaCopy[i].AGEGroup) || gearray.includes(ArmeniaCopy[i].Gender)) {
+		if (areaarray.includes(ArtsakhCopy[i].Area) || edarray.includes(ArtsakhCopy[i].Education) || agearray.includes(ArtsakhCopy[i].AGEGroup) || gearray.includes(ArtsakhCopy[i].Gender)) {
 			exarray.push(i);
 		}
 	};
-	let ssssssssssssss = [];
+	let arrdata = [];
 	for (let i = 0; i < exarray.length; i++) {
 		let arrper = {
 			"Code": ArtsakhCopy[exarray[i]].Code,
@@ -1529,14 +1589,13 @@ function plusArtsakh(percode, genderPerson, educationPerson, agePerson, area) {
 			"Education": ArtsakhCopy[exarray[i]].Education,
 			"AGEGroup": ArtsakhCopy[exarray[i]].AGEGroup,
 			"Area": ArtsakhCopy[exarray[i]].Area,
-			"Country": ArtsakhCopy[exarray[i]].Country,
-			"RegionFinal": ArtsakhCopy[exarray[i]].RegionFina,
+			"Country": ArtsakhCopy[exarray[i]].Country
 		};
 
-		ssssssssssssss.push(arrper);
+		arrdata.push(arrper);
 	}
 
-	ArtsakhCopy = getDifference(ssssssssssssss, ArtsakhCopy);
+	ArtsakhCopy = getDifference(arrdata, ArtsakhCopy);
 
 	getNumbersArtsakh();
 }
@@ -1637,7 +1696,7 @@ function artsakhExport() {
 function button_Armenia() {
 	ChosenPeopleArmenia = [];
 	while (true) {
-		
+
 		AUrban = [0, 24, 0, 0];
 		ARual = [0, 32, 0, 0];
 		AYerevan = [0, 34, 0, 0];
@@ -1673,7 +1732,7 @@ function button_Armenia() {
 			indexesper.push(JSON.parse(`{"Code": "${ArmeniaCopy[indexes[i]].Code}", "Gender": "${ArmeniaCopy[indexes[i]].Gender}", "Education": "${ArmeniaCopy[indexes[i]].Education}", "AGEGroup": "${ArmeniaCopy[indexes[i]].AGEGroup}", "Country": "${ArmeniaCopy[indexes[i]].Country}", "Area" :"${ArmeniaCopy[indexes[i]].Area}", "RegionFinal" :"${ArmeniaCopy[indexes[i]].RegionFinal}"}`));
 		}
 		indexesper.forEach(element => plusArmenia(element.Code, element.Gender, element.Education, element.AGEGroup, element.Country, element.Area, element.RegionFinal)); */
-		
+
 		while (true) {
 			if (ASecondaryNumber[0] !== ASecondaryNumber[1]) {
 				let arred = ArmeniaCopy.map(function (per) {
@@ -1846,11 +1905,13 @@ function button_Artsakh() {
 				}
 		
 				indexesper.forEach(element => plusArtsakh(element.Code, element.Gender, element.Education, element.AGEGroup, element.Country, element.Area)); */
+
 		while (true) {
 			if (ArtSecondaryNumber[0] !== ArtSecondaryNumber[1]) {
 				let arred = ArtsakhCopy.map(function (per) {
 					return per.Education;
 				});
+
 				let randomSe = getMultipleRandom(arred, "Secondary or unfinished secondary", 1);
 				let gsygdsgd = [
 					{
@@ -1858,17 +1919,16 @@ function button_Artsakh() {
 						"Gender": ArtsakhCopy[randomSe[0]].Gender,
 						"Education": ArtsakhCopy[randomSe[0]].Education,
 						"AGEGroup": ArtsakhCopy[randomSe[0]].AGEGroup,
-						"Areaggggg": ArtsakhCopy[randomSe[0]].Area,
+						"Area": ArtsakhCopy[randomSe[0]].Area,
 						"Country": ArtsakhCopy[randomSe[0]].Country
 					}
 				];
-				console.log(ArtSecondaryNumber);
-				plusArtsakh(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Areaggggg);
+
+				plusArtsakh(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Area);
 			} else {
 				break;
 			}
 		}
-
 		while (true) {
 			if (ArtAge61Number[0] !== ArtAge61Number[1]) {
 				let arred = ArtsakhCopy.map(function (per) {
@@ -1881,17 +1941,16 @@ function button_Artsakh() {
 						"Gender": ArtsakhCopy[randomSe[0]].Gender,
 						"Education": ArtsakhCopy[randomSe[0]].Education,
 						"AGEGroup": ArtsakhCopy[randomSe[0]].AGEGroup,
-						"Areaggggg": ArtsakhCopy[randomSe[0]].Area,
+						"Area": ArtsakhCopy[randomSe[0]].Area,
 						"Country": ArtsakhCopy[randomSe[0]].Country
 					}
 				];
-				console.log(randomSe);
-				plusArtsakh(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Areaggggg);
+
+				plusArtsakh(gsygdsgd[0].Code, gsygdsgd[0].Gender, gsygdsgd[0].Education, gsygdsgd[0].AGEGroup, gsygdsgd[0].Area);
 			} else {
 				break;
 			}
 		}
-
 		while (ChosenPeopleArtsakh.length !== 10) {
 			if (ArtsakhCopy.length === 0) {
 				break;
@@ -1900,7 +1959,6 @@ function button_Artsakh() {
 			plusArtsakh(winPerson[0].Code, winPerson[0].Gender, winPerson[0].Education, winPerson[0].AGEGroup, winPerson[0].Area);
 
 		}
-
 		if (ChosenPeopleArtsakh.length === 10) {
 			while (true) {
 				if (ChosenPeopleArtsakh.length === 10) {
