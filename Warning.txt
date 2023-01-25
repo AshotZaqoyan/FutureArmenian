@@ -1,1 +1,0 @@
-Նախքան exe ֆայլ  արտահանելը նախ մուտք գործել renderer.js ֆայլը և բոլոր հղումների (մասնավորապես տվյալների ստացման) սկզբից ավելացնել resources/app օրինակ՝ resources/app/src/datadiaspora.json

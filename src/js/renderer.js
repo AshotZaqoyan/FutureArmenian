@@ -7,13 +7,13 @@ let DiasporaCopy = JSON.parse(JSON.stringify(DiasporaData[0]));
 let ChosenPeople = JSON.parse(JSON.stringify(DiasporaData[1]));
 let Refusers = JSON.parse(JSON.stringify(DiasporaData[2]));
 
-let ArmeniaData = JSON.parse(fs.readFileSync('src/data/armenia.json'));
+let ArmeniaData = JSON.parse(fs.readFileSync('data/armenia.json'));
 let Armenia = JSON.parse(JSON.stringify(ArmeniaData[0]));
 let ArmeniaCopy = JSON.parse(JSON.stringify(ArmeniaData[0]));
 let ChosenPeopleArmenia = JSON.parse(JSON.stringify(ArmeniaData[1]));
 let RefusersArmenia = JSON.parse(JSON.stringify(ArmeniaData[2]));
 
-let ArtsakhData = JSON.parse(fs.readFileSync('src/data/artsakh.json'));
+let ArtsakhData = JSON.parse(fs.readFileSync('data/artsakh.json'));
 let Artsakh = JSON.parse(JSON.stringify(ArtsakhData[0]));
 let ArtsakhCopy = JSON.parse(JSON.stringify(ArtsakhData[0]));
 let ChosenPeopleArtsakh = JSON.parse(JSON.stringify(ArtsakhData[1]));
@@ -561,10 +561,10 @@ function closewindow(winid) {
 function openrestart(winid) {
 	document.getElementById(winid).classList.remove("hide");
 }
-function opensett(){
+function opensett() {
 	document.getElementById("all_settings").classList.remove("hide");
 }
-function openStartSett(){
+function openStartSett() {
 	document.getElementById("start_all_settings").classList.remove("hide");
 }
 function saveDataDiaspora() {
@@ -585,9 +585,10 @@ function saveDataArtsakh() {
 	let data = JSON.stringify(ArtsakhData);
 	fs.writeFileSync('src/data/artsakh.json', data);
 }
+
 function uploadDia() {
 	let textjson = document.getElementById("uploadjson").value;
-	DiasporaData[0] = textjson;
+	DiasporaData[0] =JSON.parse(textjson);
 	DiasporaData[1] = ChosenPeople;
 	DiasporaData[2] = Refusers;
 	let data = JSON.stringify(DiasporaData);
@@ -595,19 +596,19 @@ function uploadDia() {
 }
 function uploadArm() {
 	let textjson = document.getElementById("uploadjson").value;
-	ArmeniaData[0] = textjson;
+	ArmeniaData[0] = JSON.parse(textjson);
 	ArmeniaData[1] = ChosenPeopleArmenia;
 	ArmeniaData[2] = RefusersArmenia;
 	let data = JSON.stringify(ArmeniaData);
-	fs.writeFileSync('src/data/armenia.json', data);
+	fs.writeFileSync('data/armenia.json', data);
 }
 function uploadArt() {
 	let textjson = document.getElementById("uploadjson").value;
-	ArtsakhData[0] = textjson;
+	ArtsakhData[0] = JSON.parse(textjson);
 	ArtsakhData[1] = ChosenPeopleArtsakh;
 	ArtsakhData[2] = RefusersArtsakh;
 	let data = JSON.stringify(ArtsakhData);
-	fs.writeFileSync('src/data/artsakh.json', data);
+	fs.writeFileSync('data/artsakh.json', data);
 }
 
 function clearstorage() {
@@ -1842,18 +1843,7 @@ function button_Armenia() {
 		}
 
 	}
-	console.log(AUrban);
-	console.log(ARual);
-	console.log(AYerevan);
-	console.log(ASecondaryNumber);
-	console.log(AProfessionalNumber);
-	console.log(AUniversityNumber);
-	console.log(AAge18_30Number);
-	console.log(AAge31_45Number);
-	console.log(AAge46_60Number);
-	console.log(AAge61Number);
-	console.log(AFemale);
-	console.log(AMale);
+
 	PrintArmenia(ChosenPeopleArmenia, "armeniatable");
 	saveDataArmenia();
 	check();
@@ -1981,17 +1971,7 @@ function button_Artsakh() {
 			}
 		}
 	}
-	console.log(ArtUrban);
-	console.log(ArtRual);
-	console.log(ArtSecondaryNumber);
-	console.log(ArtProfessionalNumber);
-	console.log(ArtUniversityNumber);
-	console.log(ArtAge18_30Number);
-	console.log(ArtAge31_45Number);
-	console.log(ArtAge46_60Number);
-	console.log(ArtAge61Number);
-	console.log(ArtFemale);
-	console.log(ArtMale);
+
 	PrintArtsakh(ChosenPeopleArtsakh, "artsakhtable");
 	saveDataArtsakh();
 	check();
@@ -2152,6 +2132,21 @@ function button_Diaspora() {
 			}
 		}
 		while (true) {
+			if (FormerSUNumber[0] !== FormerSUNumber[1]) {
+				let arrca = DiasporaCopy.map(function (per) {
+					return per.CountryFinal;
+				});
+				let randomSe = getMultipleRandom(arrca, "Former SU (excl. RU & Geo)", 1);
+				let gsygdsgd = [];
+				gsygdsgd.push(JSON.parse(`{"Code": "${DiasporaCopy[randomSe].Code}", "Gender": "${DiasporaCopy[randomSe].Gender}", "Education": "${DiasporaCopy[randomSe].Education}", "AGEGroup": "${DiasporaCopy[randomSe].AGEGroup}", "CountryFinal": "${DiasporaCopy[randomSe].CountryFinal}", "Country" :"${DiasporaCopy[randomSe].Country}"}`));
+				gsygdsgd.forEach(element => plus(element.Code, element.Gender, element.Education, element.AGEGroup, element.CountryFinal, element.Country));
+
+			} else {
+				break;
+			}
+		}
+		
+		while (true) {
 			if (DProfessionalNumber[0] !== DProfessionalNumber[1]) {
 				let arred = DiasporaCopy.map(function (per) {
 					return per.Education;
@@ -2160,6 +2155,34 @@ function button_Diaspora() {
 				let gsygdsgd = [];
 				gsygdsgd.push(JSON.parse(`{"Code": "${DiasporaCopy[randomSe].Code}", "Gender": "${DiasporaCopy[randomSe].Gender}", "Education": "${DiasporaCopy[randomSe].Education}", "AGEGroup": "${DiasporaCopy[randomSe].AGEGroup}", "CountryFinal": "${DiasporaCopy[randomSe].CountryFinal}", "Country" :"${DiasporaCopy[randomSe].Country}"}`));
 				gsygdsgd.forEach(element => plus(element.Code, element.Gender, element.Education, element.AGEGroup, element.CountryFinal, element.Country));
+			} else {
+				break;
+			}
+		}
+		while (true) {
+			if (GeorgiaNumber[0] !== GeorgiaNumber[1]) {
+				let arrca = DiasporaCopy.map(function (per) {
+					return per.CountryFinal;
+				});
+				let randomSe = getMultipleRandom(arrca, "Georgia", 1);
+				let gsygdsgd = [];
+				gsygdsgd.push(JSON.parse(`{"Code": "${DiasporaCopy[randomSe].Code}", "Gender": "${DiasporaCopy[randomSe].Gender}", "Education": "${DiasporaCopy[randomSe].Education}", "AGEGroup": "${DiasporaCopy[randomSe].AGEGroup}", "CountryFinal": "${DiasporaCopy[randomSe].CountryFinal}", "Country" :"${DiasporaCopy[randomSe].Country}"}`));
+				gsygdsgd.forEach(element => plus(element.Code, element.Gender, element.Education, element.AGEGroup, element.CountryFinal, element.Country));
+
+			} else {
+				break;
+			}
+		}
+		while (true) {
+			if (FranceNumber[0] !== FranceNumber[1]) {
+				let arrca = DiasporaCopy.map(function (per) {
+					return per.CountryFinal;
+				});
+				let randomSe = getMultipleRandom(arrca, "France", 1);
+				let gsygdsgd = [];
+				gsygdsgd.push(JSON.parse(`{"Code": "${DiasporaCopy[randomSe].Code}", "Gender": "${DiasporaCopy[randomSe].Gender}", "Education": "${DiasporaCopy[randomSe].Education}", "AGEGroup": "${DiasporaCopy[randomSe].AGEGroup}", "CountryFinal": "${DiasporaCopy[randomSe].CountryFinal}", "Country" :"${DiasporaCopy[randomSe].Country}"}`));
+				gsygdsgd.forEach(element => plus(element.Code, element.Gender, element.Education, element.AGEGroup, element.CountryFinal, element.Country));
+
 			} else {
 				break;
 			}
@@ -2211,26 +2234,7 @@ function button_Diaspora() {
 		}
 
 	}
-	console.log(RussiaNumber);
-	console.log(USANumber);
-	console.log(FranceNumber);
-	console.log(GeorgiaNumber);
-	console.log(EuropeNumber);
-	console.log(FormerSUNumber);
-	console.log(MiddleEastNumber);
-	console.log(LatinAmericaNumber);
-	console.log(OtherNumber);
-	console.log(TurkeyNumber);
-	console.log(IranNumber);
-	console.log(DSecondaryNumber);
-	console.log(DProfessionalNumber);
-	console.log(DUniversityNumber);
-	console.log(DAge18_30Number);
-	console.log(DAge31_45Number);
-	console.log(DAge46_60Number);
-	console.log(DAge61Number);
-	console.log(DFemale);
-	console.log(DMale);
+
 	Print(ChosenPeople, "diasporatable");
 	saveDataDiaspora();
 	check();
